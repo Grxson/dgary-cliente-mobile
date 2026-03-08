@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.dgary_cliente_mobile"
-        minSdk = 35
+        minSdk = 34
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
