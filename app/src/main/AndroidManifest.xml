@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dgaryclientemobile">
         <activity
-            android:name=".MainActivity"
+            android:name="com.tuempresa.tuapp.ui.auth.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.auth.view.RegisterActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">dgary-cliente-mobile</string>
+
+    <!-- Login -->
+    <string name="login_empty_email">Por favor ingresa tu correo electrónico</string>
+    <string name="login_invalid_email">Por favor ingresa un correo válido</string>
+    <string name="login_empty_password">Por favor ingresa tu contraseña</string>
+    <string name="login_short_password">La contraseña debe tener al menos 4 caracteres</string>
+    <string name="login_success">¡Inicio de sesión exitoso!</string>
+
+    <!-- Register -->
+    <string name="register_empty_name">Por favor ingresa tu nombre completo</string>
+    <string name="register_empty_email">Por favor ingresa tu correo electrónico</string>
+    <string name="register_invalid_email">Por favor ingresa un correo válido</string>
+    <string name="register_empty_password">Por favor ingresa una contraseña</string>
+    <string name="register_short_password">La contraseña debe tener al menos 4 caracteres</string>
+    <string name="register_empty_confirm_password">Por favor confirma tu contraseña</string>
+    <string name="register_password_mismatch">Las contraseñas no coinciden</string>
+    <string name="register_success">¡Cuenta creada exitosamente!</string>
 </resources>
