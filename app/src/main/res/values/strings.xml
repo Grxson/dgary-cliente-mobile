@@ -1,20 +1,44 @@
 <resources>
-    <string name="app_name">dgary-cliente-mobile</string>
+    <string name="app_name">Dgary</string>
 
-    <!-- Login -->
+    <!-- Welcome Screen -->
+    <string name="welcome_sign_in">Iniciar Sesión</string>
+    <string name="welcome_sign_up">Crear Cuenta</string>
+
+    <!-- Login Screen -->
+    <string name="login_title">Inicia Sesión con tu cuenta</string>
+    <string name="login_subtitle">Introduce tu correo electrónico y contraseña para iniciar sesión.</string>
+    <string name="login_email_hint">Correo</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="login_no_account">¿No tienes una cuenta?</string>
+    <string name="login_create_account">Crear Cuenta</string>
     <string name="login_empty_email">Por favor ingresa tu correo electrónico</string>
     <string name="login_invalid_email">Por favor ingresa un correo válido</string>
     <string name="login_empty_password">Por favor ingresa tu contraseña</string>
-    <string name="login_short_password">La contraseña debe tener al menos 4 caracteres</string>
+    <string name="login_short_password">La contraseña debe tener al menos 8 caracteres</string>
     <string name="login_success">¡Inicio de sesión exitoso!</string>
 
-    <!-- Register -->
+    <!-- Register Screen -->
+    <string name="register_title">Crear Cuenta</string>
+    <string name="register_subtitle">¿Eres nuevo en Dgary?</string>
+    <string name="register_name_hint">Nombre Completo</string>
+    <string name="register_email_hint">Correo</string>
+    <string name="register_country_hint">País</string>
+    <string name="register_phone_hint">Número de Celular</string>
+    <string name="register_password_hint">Ingresa tu Contraseña</string>
+    <string name="register_button">Crear Cuenta</string>
+    <string name="register_have_account">¿Ya tienes una cuenta?</string>
+    <string name="register_sign_in">Inicia Sesión</string>
     <string name="register_empty_name">Por favor ingresa tu nombre completo</string>
     <string name="register_empty_email">Por favor ingresa tu correo electrónico</string>
     <string name="register_invalid_email">Por favor ingresa un correo válido</string>
+    <string name="register_empty_phone">Por favor ingresa tu número de celular</string>
     <string name="register_empty_password">Por favor ingresa una contraseña</string>
-    <string name="register_short_password">La contraseña debe tener al menos 4 caracteres</string>
-    <string name="register_empty_confirm_password">Por favor confirma tu contraseña</string>
-    <string name="register_password_mismatch">Las contraseñas no coinciden</string>
+    <string name="register_short_password">La contraseña debe tener al menos 8 caracteres</string>
     <string name="register_success">¡Cuenta creada exitosamente!</string>
+
+    <!-- Navigation -->
+    <string name="back_button">Atrás</string>
 </resources>

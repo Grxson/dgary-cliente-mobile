@@ -3,12 +3,13 @@ package com.tuempresa.tuapp.ui.auth.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.button.MaterialButton
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.domain.model.AuthResult
 import com.tuempresa.tuapp.domain.usecase.LoginUseCase
@@ -21,9 +22,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: TextInputEditText
     private lateinit var etPassword: TextInputEditText
     private lateinit var btnLogin: MaterialButton
+    private lateinit var btnBack: ImageButton
     private lateinit var pbLoading: ProgressBar
     private lateinit var tvError: TextView
     private lateinit var tvRegisterLink: TextView
+    private lateinit var linkForgotPassword: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +46,11 @@ class LoginActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.et_email)
         etPassword = findViewById(R.id.et_password)
         btnLogin = findViewById(R.id.btn_login)
+        btnBack = findViewById(R.id.btn_back)
         pbLoading = findViewById(R.id.pb_loading)
         tvError = findViewById(R.id.tv_error)
         tvRegisterLink = findViewById(R.id.tv_register_link)
+        linkForgotPassword = findViewById(R.id.link_forgot_password)
     }
 
     private fun setupListeners() {
@@ -61,8 +66,17 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        btnBack.setOnClickListener {
+            finish()
+        }
+
         tvRegisterLink.setOnClickListener {
             navigateToRegister()
+        }
+
+        linkForgotPassword.setOnClickListener {
+            // TODO: Implementar pantalla de recuperación de contraseña
+            showError("Funcionalidad en desarrollo")
         }
     }
 
@@ -99,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
         if (password.isEmpty()) {
             showError(getString(R.string.login_empty_password))
             isValid = false
-        } else if (password.length < 4) {
+        } else if (password.length < 8) {
             showError(getString(R.string.login_short_password))
             isValid = false
         }
@@ -127,7 +141,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showSuccess() {
         tvError.text = getString(R.string.login_success)
-        tvError.setTextColor(android.graphics.Color.GREEN)
+        tvError.setTextColor(getColor(R.color.dgary_green))
         tvError.visibility = View.VISIBLE
         // Esperar un segundo y luego navegar
         tvError.postDelayed({ navigateToMain() }, 1000)
@@ -141,5 +155,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToRegister() {
         startActivity(Intent(this, RegisterActivity::class.java))
+        finish()
     }
 }

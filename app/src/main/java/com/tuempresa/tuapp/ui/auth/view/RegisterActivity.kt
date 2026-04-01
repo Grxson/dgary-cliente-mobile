@@ -3,12 +3,14 @@ package com.tuempresa.tuapp.ui.auth.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
+import android.widget.ProgressBar
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.button.MaterialButton
-import android.widget.ProgressBar
-import android.widget.TextView
+import com.google.android.material.textfield.TextInputEditText
 import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.domain.model.AuthResult
 import com.tuempresa.tuapp.domain.usecase.RegisterUseCase
@@ -20,12 +22,14 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var viewModel: RegisterViewModel
     private lateinit var etName: TextInputEditText
     private lateinit var etEmail: TextInputEditText
+    private lateinit var etPhone: TextInputEditText
     private lateinit var etPassword: TextInputEditText
-    private lateinit var etConfirmPassword: TextInputEditText
     private lateinit var btnRegister: MaterialButton
+    private lateinit var btnBack: ImageButton
     private lateinit var pbLoading: ProgressBar
     private lateinit var tvError: TextView
     private lateinit var tvLoginLink: TextView
+    private lateinit var countrySpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,27 +48,33 @@ class RegisterActivity : AppCompatActivity() {
     private fun initializeViews() {
         etName = findViewById(R.id.et_name)
         etEmail = findViewById(R.id.et_email)
+        etPhone = findViewById(R.id.et_phone)
         etPassword = findViewById(R.id.et_password)
-        etConfirmPassword = findViewById(R.id.et_confirm_password)
         btnRegister = findViewById(R.id.btn_register)
+        btnBack = findViewById(R.id.btn_back)
         pbLoading = findViewById(R.id.pb_loading)
         tvError = findViewById(R.id.tv_error)
         tvLoginLink = findViewById(R.id.tv_login_link)
+        countrySpinner = findViewById(R.id.country_spinner)
     }
 
     private fun setupListeners() {
         btnRegister.setOnClickListener {
             val name = etName.text.toString().trim()
             val email = etEmail.text.toString().trim()
+            val phone = etPhone.text.toString().trim()
             val password = etPassword.text.toString()
-            val confirmPassword = etConfirmPassword.text.toString()
 
-            if (validateInputs(name, email, password, confirmPassword)) {
+            if (validateInputs(name, email, phone, password)) {
                 lifecycleScope.launch {
                     viewModel.register(email, password, name)
                     observeAuthResult()
                 }
             }
+        }
+
+        btnBack.setOnClickListener {
+            finish()
         }
 
         tvLoginLink.setOnClickListener {
@@ -94,8 +104,8 @@ class RegisterActivity : AppCompatActivity() {
     private fun validateInputs(
         name: String,
         email: String,
-        password: String,
-        confirmPassword: String
+        phone: String,
+        password: String
     ): Boolean {
         var isValid = true
 
@@ -112,19 +122,16 @@ class RegisterActivity : AppCompatActivity() {
             isValid = false
         }
 
-        if (password.isEmpty()) {
-            showError(getString(R.string.register_empty_password))
-            isValid = false
-        } else if (password.length < 4) {
-            showError(getString(R.string.register_short_password))
+        if (phone.isEmpty()) {
+            showError(getString(R.string.register_empty_phone))
             isValid = false
         }
 
-        if (confirmPassword.isEmpty()) {
-            showError(getString(R.string.register_empty_confirm_password))
+        if (password.isEmpty()) {
+            showError(getString(R.string.register_empty_password))
             isValid = false
-        } else if (password != confirmPassword) {
-            showError(getString(R.string.register_password_mismatch))
+        } else if (password.length < 8) {
+            showError(getString(R.string.register_short_password))
             isValid = false
         }
 
@@ -142,7 +149,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showError(message: String) {
         tvError.text = message
-        tvError.setTextColor(android.graphics.Color.RED)
+        tvError.setTextColor(getColor(R.color.dgary_red))
         tvError.visibility = View.VISIBLE
     }
 
@@ -152,7 +159,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showSuccess() {
         tvError.text = getString(R.string.register_success)
-        tvError.setTextColor(android.graphics.Color.GREEN)
+        tvError.setTextColor(getColor(R.color.dgary_green))
         tvError.visibility = View.VISIBLE
         // Esperar un segundo y luego navegar a login
         tvError.postDelayed({ navigateToLogin() }, 1000)
