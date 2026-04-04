@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuempresa.tuapp.R
+import com.tuempresa.tuapp.ui.account.view.AccountActivity
 import com.tuempresa.tuapp.ui.carrito.view.CarritoActivity
 import com.tuempresa.tuapp.ui.cupones.adapter.CuponesAdapter
 import com.tuempresa.tuapp.ui.cupones.model.Cupon
@@ -59,7 +60,8 @@ class CuponesActivity : AppCompatActivity() {
         }
 
         navMiCuenta.setOnClickListener {
-            // Navegar a Mi Cuenta (crear después)
+            startActivity(Intent(this, AccountActivity::class.java))
+            finish()
         }
     }
 

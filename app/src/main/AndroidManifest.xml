@@ -46,6 +46,21 @@
             android:name="com.tuempresa.tuapp.ui.carrito.view.CarritoActivity"
             android:exported="true"
             android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.account.view.AccountActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.account.view.SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.account.view.EditAccountActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
     </application>
 
 </manifest>

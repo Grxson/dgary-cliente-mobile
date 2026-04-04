@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.domain.usecase.GetProductsUseCase
+import com.tuempresa.tuapp.ui.account.view.AccountActivity
 import com.tuempresa.tuapp.ui.carrito.view.CarritoActivity
 import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.home.adapter.ProductAdapter
@@ -129,7 +130,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         navMiCuenta.setOnClickListener {
-            // Navegar a Mi Cuenta (crear después)
+            startActivity(Intent(this, AccountActivity::class.java))
         }
     }
 

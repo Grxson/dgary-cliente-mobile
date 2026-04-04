@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.tuempresa.tuapp.R
+import com.tuempresa.tuapp.ui.account.view.AccountActivity
 import com.tuempresa.tuapp.ui.home.view.HomeActivity
 
 class CarritoActivity : AppCompatActivity() {
@@ -46,7 +47,7 @@ class CarritoActivity : AppCompatActivity() {
         }
 
         btnMiCuenta.setOnClickListener {
-            // Navegar a Mi Cuenta (crear después)
+            startActivity(Intent(this, AccountActivity::class.java))
         }
     }
 }

@@ -72,4 +72,22 @@
     <string name="carrito_agrega_para_comenzar">Agrega para comenzar</string>
     <string name="carrito_descripcion">Una vez que añadas artículos a la tienda, tu carrito aparecerá aquí</string>
     <string name="carrito_empezar_compra">Empezar a comprar</string>
+
+    <!-- Account Screen -->
+    <string name="account_title">Cuenta</string>
+    <string name="account_user_test">Prueba Prueba</string>
+    <string name="account_ordenes">Órdenes</string>
+    <string name="account_billetera">Billetera</string>
+    <string name="account_ajustes">Ajustes</string>
+    <string name="account_edit_cuenta">Editar Cuenta</string>
+    <string name="account_lugares_guardados">Lugares guardados</string>
+    <string name="account_cerrar_sesion">Cerrar Sesión</string>
+    <string name="account_nombre">Nombre</string>
+    <string name="account_nombre_hint">Ingresa tu nombre completo</string>
+    <string name="account_guardar_cambios">Guardar Cambios</string>
+    <string name="account_email_default">prueba@example.com</string>
+    <string name="account_telefono_default">1234567890</string>
+
+    <!-- General -->
+    <string name="next">Siguiente</string>
 </resources>

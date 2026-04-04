@@ -62,6 +62,8 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.fragment)
 
     // Testing
     testImplementation(libs.junit)
