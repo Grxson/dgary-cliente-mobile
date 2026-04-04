@@ -66,6 +66,11 @@
             android:name="com.tuempresa.tuapp.ui.order.view.OrderDetailActivity"
             android:exported="true"
             android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.order.view.OrderTrackingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
     </application>
 
 </manifest>

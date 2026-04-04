@@ -105,6 +105,18 @@
     <string name="order_item">Producto</string>
     <string name="order_agregar">Agregar</string>
 
+    <!-- Order Tracking Screen -->
+    <string name="order_preparando">Preparando tu orden</string>
+    <string name="order_llegando">Llegando a %s</string>
+    <string name="order_llegada">Llegada a las %s</string>
+    <string name="order_llegando_a">Llegando a %s</string>
+    <string name="order_llegada_a_las">Llegada a las %s</string>
+    <string name="order_detalles_entrega">Detalles de entrega</string>
+    <string name="order_direccion">Dirección</string>
+    <string name="order_resumen_pedido">Resumen del pedido</string>
+    <string name="close">Cerrar</string>
+    <string name="info">Información</string>
+
     <!-- General -->
     <string name="next">Siguiente</string>
 </resources>
