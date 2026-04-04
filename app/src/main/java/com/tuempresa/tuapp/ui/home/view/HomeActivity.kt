@@ -3,6 +3,7 @@ package com.tuempresa.tuapp.ui.home.view
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.domain.usecase.GetProductsUseCase
+import com.tuempresa.tuapp.ui.carrito.view.CarritoActivity
 import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.home.adapter.ProductAdapter
 import com.tuempresa.tuapp.ui.home.viewmodel.HomeViewModel
@@ -27,6 +29,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var categoryPLeche: ImageView
     private lateinit var categoryPAgua: ImageView
     private lateinit var categoryAguas: ImageView
+
+    // Navigation buttons
+    private lateinit var navInicio: LinearLayout
+    private lateinit var navCarrito: LinearLayout
+    private lateinit var navMiCuenta: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +54,10 @@ class HomeActivity : AppCompatActivity() {
         categoryPLeche = findViewById(R.id.category_p_leche)
         categoryPAgua = findViewById(R.id.category_p_agua)
         categoryAguas = findViewById(R.id.category_aguas)
+
+        navInicio = findViewById(R.id.nav_inicio)
+        navCarrito = findViewById(R.id.nav_carrito)
+        navMiCuenta = findViewById(R.id.nav_mi_cuenta)
 
         // Configurar RecyclerView de productos con LinearLayoutManager
         rvProducts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -83,7 +94,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, CuponesActivity::class.java))
         }
 
-        // ...existing code...
         categoryNieves.setOnClickListener {
             viewModel.filterByCategory("Nieves")
         }
@@ -98,6 +108,19 @@ class HomeActivity : AppCompatActivity() {
 
         categoryAguas.setOnClickListener {
             viewModel.filterByCategory("Aguas")
+        }
+
+        // Navigation listeners
+        navInicio.setOnClickListener {
+            // Ya estamos en Inicio
+        }
+
+        navCarrito.setOnClickListener {
+            startActivity(Intent(this, CarritoActivity::class.java))
+        }
+
+        navMiCuenta.setOnClickListener {
+            // Navegar a Mi Cuenta (crear después)
         }
     }
 

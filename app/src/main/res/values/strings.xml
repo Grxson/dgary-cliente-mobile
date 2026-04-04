@@ -55,4 +55,12 @@
 
     <!-- Cupones Screen -->
     <string name="cupon_comprar_ahora">Comprar Ahora</string>
+
+    <!-- Carrito Screen -->
+    <string name="carrito_title">Carrito</string>
+    <string name="carrito_ordenes">Órdenes</string>
+    <string name="carrito_empty">Carrito Vacío</string>
+    <string name="carrito_agrega_para_comenzar">Agrega para comenzar</string>
+    <string name="carrito_descripcion">Una vez que añadas artículos a la tienda, tu carrito aparecerá aquí</string>
+    <string name="carrito_empezar_compra">Empezar a comprar</string>
 </resources>
