@@ -16,6 +16,18 @@ import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.home.adapter.ProductAdapter
 import com.tuempresa.tuapp.ui.home.viewmodel.HomeViewModel
 
+// ViewModelFactory para crear instancias de HomeViewModel
+class HomeViewModelFactory(private val getProductsUseCase: GetProductsUseCase) :
+    ViewModelProvider.Factory {
+    override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return HomeViewModel(getProductsUseCase) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
+
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var btnDelivery: MaterialButton
@@ -65,13 +77,10 @@ class HomeActivity : AppCompatActivity() {
         rvProducts.adapter = productAdapter
     }
 
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(this, object : androidx.lifecycle.ViewModelProvider.Factory {
-            override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
-                return HomeViewModel(GetProductsUseCase()) as T
-            }
-        }).get(HomeViewModel::class.java)
-    }
+     private fun setupViewModel() {
+         val factory = HomeViewModelFactory(GetProductsUseCase())
+         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
+     }
 
     private fun setupListeners() {
         btnDelivery.setOnClickListener {

@@ -27,7 +27,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="MXN\$25 Descuento"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
@@ -45,7 +44,6 @@
                     android:id="@+id/tv_cupon_descuento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="\$25"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/white" />
@@ -57,7 +55,6 @@
             android:id="@+id/tv_cupon_descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción del Cupón"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="@dimen/margin_large" />

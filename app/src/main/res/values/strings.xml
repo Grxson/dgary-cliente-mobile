@@ -55,6 +55,15 @@
 
     <!-- Cupones Screen -->
     <string name="cupon_comprar_ahora">Comprar Ahora</string>
+    <string name="cupon_25_descuento">MXN$25 Descuento</string>
+    <string name="cupon_50_descuento">MXN$50 Descuento</string>
+    <string name="cupon_15_descuento">MXN$15 Descuento</string>
+    <string name="cupon_25_monto">$25</string>
+    <string name="cupon_50_monto">$50</string>
+    <string name="cupon_15_monto">$15</string>
+    <string name="cupon_descripcion_default">Descripción del Cupón</string>
+    <string name="cupon_descripcion_especial">Cupón especial para compras mayores</string>
+    <string name="cupon_descripcion_limitada">Oferta limitada</string>
 
     <!-- Carrito Screen -->
     <string name="carrito_title">Carrito</string>

@@ -11,7 +11,7 @@ import com.tuempresa.tuapp.ui.cupones.model.Cupon
 
 class CuponesAdapter(private var cupones: List<Cupon>) : RecyclerView.Adapter<CuponesAdapter.CuponViewHolder>() {
 
-    inner class CuponViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CuponViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitulo: TextView = itemView.findViewById(R.id.tv_cupon_titulo)
         private val tvDescripcion: TextView = itemView.findViewById(R.id.tv_cupon_descripcion)
         private val tvDescuento: TextView = itemView.findViewById(R.id.tv_cupon_descuento)
@@ -41,10 +41,5 @@ class CuponesAdapter(private var cupones: List<Cupon>) : RecyclerView.Adapter<Cu
     }
 
     override fun getItemCount() = cupones.size
-
-    fun updateCupones(newCupones: List<Cupon>) {
-        cupones = newCupones
-        notifyDataSetChanged()
-    }
 }
 

@@ -63,34 +63,34 @@ class CuponesActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadCupones() {
-        // Crear datos de ejemplo de cupones
-        val cupones = listOf(
-            Cupon(
-                id = 1,
-                titulo = "MXN\$25 Descuento",
-                descripcion = "Descripción del Cupón",
-                descuento = "\$25",
-                botonTexto = "Comprar Ahora"
-            ),
-            Cupon(
-                id = 2,
-                titulo = "MXN\$50 Descuento",
-                descripcion = "Cupón especial para compras mayores",
-                descuento = "\$50",
-                botonTexto = "Comprar Ahora"
-            ),
-            Cupon(
-                id = 3,
-                titulo = "MXN\$15 Descuento",
-                descripcion = "Oferta limitada",
-                descuento = "\$15",
-                botonTexto = "Comprar Ahora"
-            )
-        )
+     private fun loadCupones() {
+         // Crear datos de ejemplo de cupones
+         val cupones = listOf(
+             Cupon(
+                 id = 1,
+                 titulo = getString(R.string.cupon_25_descuento),
+                 descripcion = getString(R.string.cupon_descripcion_default),
+                 descuento = getString(R.string.cupon_25_monto),
+                 botonTexto = getString(R.string.cupon_comprar_ahora)
+             ),
+             Cupon(
+                 id = 2,
+                 titulo = getString(R.string.cupon_50_descuento),
+                 descripcion = getString(R.string.cupon_descripcion_especial),
+                 descuento = getString(R.string.cupon_50_monto),
+                 botonTexto = getString(R.string.cupon_comprar_ahora)
+             ),
+             Cupon(
+                 id = 3,
+                 titulo = getString(R.string.cupon_15_descuento),
+                 descripcion = getString(R.string.cupon_descripcion_limitada),
+                 descuento = getString(R.string.cupon_15_monto),
+                 botonTexto = getString(R.string.cupon_comprar_ahora)
+             )
+         )
 
-        cuponesAdapter = CuponesAdapter(cupones)
-        rvCupones.adapter = cuponesAdapter
-    }
+         cuponesAdapter = CuponesAdapter(cupones)
+         rvCupones.adapter = cuponesAdapter
+     }
 }
 
