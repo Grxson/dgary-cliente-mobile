@@ -180,6 +180,7 @@
 
         <!-- Inicio -->
         <LinearLayout
+            android:id="@+id/nav_inicio"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -205,6 +206,7 @@
 
         <!-- Carrito -->
         <LinearLayout
+            android:id="@+id/nav_carrito"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -230,6 +232,7 @@
 
         <!-- Mi Cuenta -->
         <LinearLayout
+            android:id="@+id/nav_mi_cuenta"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

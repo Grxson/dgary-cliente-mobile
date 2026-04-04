@@ -9,4 +9,9 @@
     </style>
 
     <style name="Theme.Dgaryclientemobile" parent="Base.Theme.Dgaryclientemobile" />
+
+    <!-- Clean theme without background for regular screens -->
+    <style name="Theme.Dgaryclientemobile.CleanScreen" parent="Base.Theme.Dgaryclientemobile">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
 </resources>

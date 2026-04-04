@@ -36,6 +36,16 @@
         <activity
             android:name="com.tuempresa.tuapp.ui.home.view.HomeActivity"
             android:exported="true" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.cupones.view.CuponesActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.carrito.view.CarritoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
     </application>
 
 </manifest>

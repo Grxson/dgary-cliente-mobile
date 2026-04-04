@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/margin_large"
+            android:background="@color/white">
+
+            <!-- Órdenes Badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_ordenes_badge"
+                android:layout_marginEnd="@dimen/margin_large">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:contentDescription="@string/carrito_ordenes"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_ordenes"
+                    android:layout_marginEnd="4dp"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/carrito_ordenes"
+                    android:textSize="12sp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/carrito_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_secondary" />
+
+        <!-- Empty Cart Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/margin_large">
+
+            <!-- Cart Icon -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:contentDescription="@string/carrito_empty"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_carrito_vacio"
+                android:layout_marginBottom="@dimen/margin_large" />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/carrito_agrega_para_comenzar"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/margin_medium" />
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/carrito_descripcion"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/margin_large" />
+
+            <!-- Start Shopping Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_iniciar_compra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/carrito_empezar_compra"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/dgary_yellow"
+                app:cornerRadius="@dimen/corner_radius_large" />
+        </LinearLayout>
+
+        <!-- Bottom Navigation Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/white"
+            android:elevation="8dp"
+            android:baselineAligned="false">
+
+            <!-- Inicio -->
+            <LinearLayout
+                android:id="@+id/nav_inicio"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/home_inicio"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/text_secondary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_inicio"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Carrito -->
+            <LinearLayout
+                android:id="@+id/nav_carrito"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/home_carrito"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_carrito"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Mi Cuenta -->
+            <LinearLayout
+                android:id="@+id/nav_mi_cuenta"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/home_mi_cuenta"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/text_secondary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_mi_cuenta"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        </LinearLayout>
+
+</FrameLayout>
+
