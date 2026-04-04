@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="@dimen/margin_medium"
+    android:paddingHorizontal="@dimen/margin_medium"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:background="@drawable/bg_discount_badge">
+
+    <!-- Cantidad -->
+    <TextView
+        android:id="@+id/tv_cantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginEnd="@dimen/margin_large" />
+
+    <!-- Imagen del Producto -->
+    <ImageView
+        android:id="@+id/iv_producto"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/order_item"
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="@dimen/margin_medium" />
+
+    <!-- Nombre -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/margin_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary" />
+    </LinearLayout>
+
+    <!-- Precio -->
+    <TextView
+        android:id="@+id/tv_item_precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/dgary_green" />
+
+</LinearLayout>
+

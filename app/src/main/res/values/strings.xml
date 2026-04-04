@@ -88,6 +88,23 @@
     <string name="account_email_default">prueba@example.com</string>
     <string name="account_telefono_default">1234567890</string>
 
+    <!-- Order Detail Screen -->
+    <string name="order_detalles">Detalles de la Orden</string>
+    <string name="order_ubicacion">Ubicación</string>
+    <string name="order_ubicacion_label">Casa</string>
+    <string name="order_tiempo_entrega">Tiempo de Entrega</string>
+    <string name="order_tus_articulos">Tus artículos</string>
+    <string name="order_anadir_articulos">Añadir Artículos</string>
+    <string name="order_cupon">Cupón Aplicado</string>
+    <string name="order_subtotal">Subtotal</string>
+    <string name="order_descuento">Descuento</string>
+    <string name="order_total">Total</string>
+    <string name="order_metodo_pago">Método de Pago</string>
+    <string name="order_seguir_default">Seguir</string>
+    <string name="order_seguir">Seguir - $%s</string>
+    <string name="order_item">Producto</string>
+    <string name="order_agregar">Agregar</string>
+
     <!-- General -->
     <string name="next">Siguiente</string>
 </resources>
