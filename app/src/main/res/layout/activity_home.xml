@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- Top Tab Bar: Delivery & Cupones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/margin_large"
+        android:background="@color/white"
+        android:baselineAligned="false">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_delivery"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            app:cornerRadius="@dimen/corner_radius_large" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cupones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_cupones"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/dgary_green"
+            app:cornerRadius="@dimen/corner_radius_large" />
+    </LinearLayout>
+
+    <!-- Promotional Banner -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo_nombre"
+        android:layout_margin="@dimen/margin_large" />
+
+    <!-- Categories Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/margin_large"
+        android:baselineAligned="false">
+
+        <!-- Nieves Category -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/margin_small">
+
+            <ImageView
+                android:id="@+id/category_nieves"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/home_category_nieves"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono_nieves" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_category_nieves"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/margin_small" />
+        </LinearLayout>
+
+        <!-- P. Leche Category -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/margin_small">
+
+            <ImageView
+                android:id="@+id/category_p_leche"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/home_category_p_leche"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono_paletas_leche" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_category_p_leche"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/margin_small" />
+        </LinearLayout>
+
+        <!-- P. Agua Category -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/margin_small">
+
+            <ImageView
+                android:id="@+id/category_p_agua"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/home_category_p_agua"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono_paletas_agua" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_category_p_agua"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/margin_small" />
+        </LinearLayout>
+
+        <!-- Aguas Category -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/margin_small">
+
+            <ImageView
+                android:id="@+id/category_aguas"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/home_category_aguas"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono_aguas" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_category_aguas"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/margin_small" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Products List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_products"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/margin_large"
+        android:clipToPadding="false" />
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:baselineAligned="false">
+
+        <!-- Inicio -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/home_inicio"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_back"
+                app:tint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_inicio"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Carrito -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/home_carrito"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_back"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_carrito"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Mi Cuenta -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/home_mi_cuenta"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_back"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_mi_cuenta"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+

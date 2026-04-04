@@ -41,4 +41,15 @@
 
     <!-- Navigation -->
     <string name="back_button">Atrás</string>
+
+    <!-- Home Screen -->
+    <string name="home_delivery">Delivery</string>
+    <string name="home_cupones">Cupones</string>
+    <string name="home_category_nieves">Nieves</string>
+    <string name="home_category_p_leche">P. Leche</string>
+    <string name="home_category_p_agua">P. Agua</string>
+    <string name="home_category_aguas">Aguas</string>
+    <string name="home_inicio">Inicio</string>
+    <string name="home_carrito">Carrito</string>
+    <string name="home_mi_cuenta">Mi Cuenta</string>
 </resources>

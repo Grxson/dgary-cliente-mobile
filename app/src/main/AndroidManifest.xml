@@ -32,6 +32,10 @@
         <activity
             android:name="com.tuempresa.tuapp.MainActivity"
             android:exported="true" />
+
+        <activity
+            android:name="com.tuempresa.tuapp.ui.home.view.HomeActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
