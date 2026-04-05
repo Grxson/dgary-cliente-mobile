@@ -2,6 +2,7 @@ package com.tuempresa.tuapp.ui.auth.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ProgressBar
@@ -39,10 +40,13 @@ class RegisterActivity : AppCompatActivity() {
         initializeViews()
 
         // Inicializar ViewModel
-        viewModel = RegisterViewModel(RegisterUseCase())
+        viewModel = RegisterViewModel(RegisterUseCase(applicationContext))
 
         // Configurar listeners
         setupListeners()
+
+        // Observar resultados una sola vez
+        observeAuthResult()
     }
 
     private fun initializeViews() {
@@ -60,16 +64,27 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         btnRegister.setOnClickListener {
+            Log.d("RegisterActivity", "🎯 BOTÓN REGISTRO CLICKEADO")
             val name = etName.text.toString().trim()
             val email = etEmail.text.toString().trim()
             val phone = etPhone.text.toString().trim()
             val password = etPassword.text.toString()
 
+            Log.d("RegisterActivity", "📝 Validando: name=$name, email=$email, phone=$phone")
+            
             if (validateInputs(name, email, phone, password)) {
+                Log.d("RegisterActivity", "✅ Validación OK - Iniciando coroutine...")
                 lifecycleScope.launch {
-                    viewModel.register(email, password, name)
-                    observeAuthResult()
+                    Log.d("RegisterActivity", "🚀 Coroutine iniciada - llamando a viewModel.register()")
+                    try {
+                        viewModel.register(name, email, phone, password)
+                        Log.d("RegisterActivity", "✅ register() completado sin excepciones")
+                    } catch (e: Exception) {
+                        Log.e("RegisterActivity", "❌ EXCEPCIÓN en launch: ${e.message}", e)
+                    }
                 }
+            } else {
+                Log.d("RegisterActivity", "❌ Validación fallida")
             }
         }
 
@@ -124,6 +139,9 @@ class RegisterActivity : AppCompatActivity() {
 
         if (phone.isEmpty()) {
             showError(getString(R.string.register_empty_phone))
+            isValid = false
+        } else if (!phone.matches(Regex("^[0-9]{10}$"))) {
+            showError("El teléfono debe tener 10 dígitos (sin +52 ni espacios)")
             isValid = false
         }
 

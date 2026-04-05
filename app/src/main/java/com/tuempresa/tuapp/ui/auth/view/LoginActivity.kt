@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.domain.model.AuthResult
 import com.tuempresa.tuapp.domain.usecase.LoginUseCase
+import com.tuempresa.tuapp.ui.home.view.HomeActivity
 import com.tuempresa.tuapp.ui.auth.viewmodel.LoginViewModel
 import kotlinx.coroutines.launch
 
@@ -36,10 +37,13 @@ class LoginActivity : AppCompatActivity() {
         initializeViews()
 
         // Inicializar ViewModel
-        viewModel = LoginViewModel(LoginUseCase())
+        viewModel = LoginViewModel(LoginUseCase(applicationContext))
 
         // Configurar listeners
         setupListeners()
+
+        // Observar resultados una sola vez
+        observeAuthResult()
     }
 
     private fun initializeViews() {
@@ -61,7 +65,6 @@ class LoginActivity : AppCompatActivity() {
             if (validateInputs(email, password)) {
                 lifecycleScope.launch {
                     viewModel.login(email, password)
-                    observeAuthResult()
                 }
             }
         }
@@ -148,9 +151,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToMain() {
-        // TODO: Implementar navegación a MainActivity
-        // startActivity(Intent(this, MainActivity::class.java))
-        // finish()
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 
     private fun navigateToRegister() {

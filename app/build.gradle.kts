@@ -1,7 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    // Kotlin plugin removido: evitamos registro duplicado de la extensión 'kotlin'
-    // id("org.jetbrains.kotlin.android")
 }
 
 // Configuración Kotlin moderna: jvmToolchain
@@ -19,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId = "com.tuempresa.tuapp"
-        minSdk = 34
+        minSdk = 33
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -28,6 +26,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            isDebuggable = true
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -50,20 +52,23 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
-
     // Lifecycle & ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.activity:activity-ktx:1.7.2")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+    // Coroutines (alineadas con Kotlin 2.x)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.fragment)
+
+    // Networking
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Testing
     testImplementation(libs.junit)

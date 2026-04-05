@@ -79,7 +79,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
      private fun setupViewModel() {
-         val factory = HomeViewModelFactory(GetProductsUseCase())
+         val factory = HomeViewModelFactory(GetProductsUseCase(applicationContext))
          viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
      }
 
@@ -118,6 +118,12 @@ class HomeActivity : AppCompatActivity() {
 
         categoryAguas.setOnClickListener {
             viewModel.filterByCategory("Aguas")
+        }
+
+        btnDelivery.setOnLongClickListener {
+            // Atajo para volver a cargar todo el catálogo desde API.
+            viewModel.loadAllProducts()
+            true
         }
 
         // Navigation listeners
