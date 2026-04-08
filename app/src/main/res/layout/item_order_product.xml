@@ -14,7 +14,7 @@
         android:id="@+id/tv_cantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="@string/order_quantity_default"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@color/black"

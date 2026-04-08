@@ -157,7 +157,7 @@
                     android:id="@+id/tv_direccion_tracking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GG, GG"
+                    android:text="@string/order_tracking_address_sample"
                     android:textSize="14sp"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -204,7 +204,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="XXXXXXXXXX"
+                    android:text="@string/order_tracking_items_sample"
                     android:textSize="14sp"
                     android:textColor="@color/black" />
             </LinearLayout>

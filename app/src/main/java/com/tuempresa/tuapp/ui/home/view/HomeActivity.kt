@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,8 +23,8 @@ class HomeViewModelFactory(private val getProductsUseCase: GetProductsUseCase) :
     ViewModelProvider.Factory {
     override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return HomeViewModel(getProductsUseCase) as T
+            return modelClass.cast(HomeViewModel(getProductsUseCase))
+                ?: throw IllegalStateException("No se pudo crear HomeViewModel")
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
@@ -89,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
                 android.graphics.Color.BLACK
             )
             btnCupones.backgroundTintList = android.content.res.ColorStateList.valueOf(
-                resources.getColor(R.color.dgary_green, null)
+                ContextCompat.getColor(this, R.color.dgary_green)
             )
         }
 
@@ -98,7 +99,7 @@ class HomeActivity : AppCompatActivity() {
                 android.graphics.Color.BLACK
             )
             btnDelivery.backgroundTintList = android.content.res.ColorStateList.valueOf(
-                resources.getColor(R.color.dgary_green, null)
+                ContextCompat.getColor(this, R.color.dgary_green)
             )
             // Navegar a la pantalla de cupones
             startActivity(Intent(this, CuponesActivity::class.java))

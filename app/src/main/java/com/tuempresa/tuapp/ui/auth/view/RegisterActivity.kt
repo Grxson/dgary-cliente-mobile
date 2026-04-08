@@ -141,7 +141,7 @@ class RegisterActivity : AppCompatActivity() {
             showError(getString(R.string.register_empty_phone))
             isValid = false
         } else if (!phone.matches(Regex("^[0-9]{10}$"))) {
-            showError("El teléfono debe tener 10 dígitos (sin +52 ni espacios)")
+            showError(getString(R.string.register_phone_invalid))
             isValid = false
         }
 

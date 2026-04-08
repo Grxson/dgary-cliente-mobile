@@ -2,9 +2,16 @@
 <network-security-config>
     <!-- Permitir tráfico HTTP para desarrollo -->
     <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.168.1.10</domain>
+        <domain includeSubdomains="true">192.168.1.11</domain>
         <domain includeSubdomains="true">192.168.1.12</domain>
-        <domain includeSubdomains="true">192.168.0.0</domain>
-        <domain includeSubdomains="true">10.0.0.0</domain>
+        <domain includeSubdomains="true">192.168.1.13</domain>
+        <domain includeSubdomains="true">192.168.1.14</domain>
+        <domain includeSubdomains="true">192.168.1.15</domain>
+        <domain includeSubdomains="true">192.168.1.16</domain>
+        <domain includeSubdomains="true">192.168.1.17</domain>
+        <domain includeSubdomains="true">192.168.1.18</domain>
+        <domain includeSubdomains="true">192.168.1.19</domain>
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">127.0.0.1</domain>
     </domain-config>

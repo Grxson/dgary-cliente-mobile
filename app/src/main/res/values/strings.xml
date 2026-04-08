@@ -37,7 +37,9 @@
     <string name="register_empty_phone">Por favor ingresa tu número de celular</string>
     <string name="register_empty_password">Por favor ingresa una contraseña</string>
     <string name="register_short_password">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="register_phone_invalid">El teléfono debe tener 10 dígitos (sin +52 ni espacios)</string>
     <string name="register_success">¡Cuenta creada exitosamente!</string>
+    <string name="register_error_placeholder"></string>
 
     <!-- Navigation -->
     <string name="back_button">Atrás</string>
@@ -88,6 +90,45 @@
     <string name="account_email_default">prueba@example.com</string>
     <string name="account_telefono_default">1234567890</string>
 
+    <!-- Wallet / Payment Screen -->
+    <string name="payment_title">Billetera</string>
+    <string name="payment_add_card_title">Agregar tarjeta</string>
+    <string name="payment_add_card_subtitle">Usa tu tarjeta para pagar pedidos con Stripe en modo sandbox.</string>
+    <string name="payment_secure_note">Tus datos se procesan de forma segura con Stripe.</string>
+    <string name="payment_test_mode">Modo sandbox</string>
+    <string name="payment_save_card">Guardar tarjeta</string>
+    <string name="payment_card_preview_title">Tarjeta principal</string>
+    <string name="payment_card_preview_subtitle">Lista para usarse en tus pedidos</string>
+    <string name="payment_sheet_placeholder">Stripe PaymentSheet sandbox listo. Cuando conectemos backend, aquí se abrirá el formulario oficial para agregar y confirmar método de pago.</string>
+
+    <!-- Location Selection Screen -->
+    <string name="location_title">Seleccionar ubicación</string>
+    <string name="location_search_hint">Ingresar nueva dirección</string>
+    <string name="location_nearby">Ubicación Cercana</string>
+    <string name="location_current">Ubicación actual</string>
+    <string name="location_activate">Activar</string>
+    <string name="location_recent">Ubicaciones recientes</string>
+    <string name="location_edit">Editar ubicación</string>
+    <string name="location_home">Casa</string>
+    <string name="location_work">Trabajo</string>
+    <string name="location_sample_subtitle">GG</string>
+
+    <!-- Order Detail Screen -->
+    <string name="order_location_value">GG</string>
+    <string name="order_delivery_time_value">15-30 min(s)</string>
+    <string name="order_item_name_sample">Helao</string>
+    <string name="order_preparation_1">Preparación 1</string>
+    <string name="order_preparation_2">Preparación 2</string>
+    <string name="order_preparation_3">Preparación 3</string>
+    <string name="order_add_items_button">Añadir Artículos</string>
+    <string name="order_coupon_saving">Estás ahorrando %1$s pesos</string>
+    <string name="order_total_value_template">%1$s</string>
+    <string name="order_follow_value">Seguir - $%1$s</string>
+
+    <!-- Order Tracking Screen -->
+    <string name="order_tracking_address_sample">GG, GG</string>
+    <string name="order_tracking_items_sample">XXXXXXXXXX</string>
+
     <!-- Order Detail Screen -->
     <string name="order_detalles">Detalles de la Orden</string>
     <string name="order_ubicacion">Ubicación</string>
@@ -95,6 +136,7 @@
     <string name="order_tiempo_entrega">Tiempo de Entrega</string>
     <string name="order_tus_articulos">Tus artículos</string>
     <string name="order_anadir_articulos">Añadir Artículos</string>
+    <string name="order_add_symbol">+</string>
     <string name="order_cupon">Cupón Aplicado</string>
     <string name="order_subtotal">Subtotal</string>
     <string name="order_descuento">Descuento</string>
@@ -104,6 +146,7 @@
     <string name="order_seguir">Seguir - $%s</string>
     <string name="order_item">Producto</string>
     <string name="order_agregar">Agregar</string>
+    <string name="order_quantity_default">1</string>
 
     <!-- Order Tracking Screen -->
     <string name="order_preparando">Preparando tu orden</string>

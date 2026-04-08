@@ -221,7 +221,7 @@
                 android:id="@+id/tv_error"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="@string/register_error_placeholder"
                 android:textColor="@color/dgary_red"
                 android:textAlignment="center"
                 android:visibility="gone"

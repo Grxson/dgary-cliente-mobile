@@ -12,6 +12,7 @@ import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.domain.model.Order
 import com.tuempresa.tuapp.domain.model.OrderItem
 import com.tuempresa.tuapp.domain.model.Preparacion
+import com.tuempresa.tuapp.ui.account.view.PaymentMethodActivity
 import com.tuempresa.tuapp.ui.order.adapter.OrderItemsAdapter
 import com.tuempresa.tuapp.ui.order.adapter.PreparacionAdapter
 import java.util.Locale
@@ -72,8 +73,20 @@ class OrderDetailActivity : AppCompatActivity() {
             // Navegar a agregar artículos
         }
 
+        findViewById<LinearLayout>(R.id.btn_ubicacion).setOnClickListener {
+            startActivity(android.content.Intent(this, LocationSelectionActivity::class.java))
+        }
+
+        findViewById<LinearLayout>(R.id.btn_metodo_pago).setOnClickListener {
+            startActivity(android.content.Intent(this, PaymentMethodActivity::class.java))
+        }
+
         ivMetodoPago.setOnClickListener {
-            // Mostrar opciones de métodos de pago
+            startActivity(android.content.Intent(this, PaymentMethodActivity::class.java))
+        }
+
+        tvUbicacion.setOnClickListener {
+            startActivity(android.content.Intent(this, LocationSelectionActivity::class.java))
         }
 
         btnSeguir.setOnClickListener {
@@ -85,15 +98,15 @@ class OrderDetailActivity : AppCompatActivity() {
     private fun loadOrderData() {
         // Datos de prueba
         val preparaciones = listOf(
-            Preparacion("1", "Preparación 1"),
-            Preparacion("2", "Preparación 2"),
-            Preparacion("3", "Preparación 3")
+            Preparacion("1", getString(R.string.order_preparation_1)),
+            Preparacion("2", getString(R.string.order_preparation_2)),
+            Preparacion("3", getString(R.string.order_preparation_3))
         )
 
         val items = listOf(
             OrderItem(
                 id = "1",
-                nombre = "Helao",
+                nombre = getString(R.string.order_item_name_sample),
                 cantidad = 1,
                 precio = 13.18,
                 preparaciones = preparaciones
@@ -102,13 +115,13 @@ class OrderDetailActivity : AppCompatActivity() {
 
         order = Order(
             id = "123",
-            ubicacion = "GG",
-            tiempoEntrega = "15-30 min(s)",
+            ubicacion = getString(R.string.order_location_value),
+            tiempoEntrega = getString(R.string.order_delivery_time_value),
             items = items,
             subtotal = 19.99,
             descuento = 19.99,
             total = 10.71,
-            cuponAplicado = "Estás ahorrando \$X pesos",
+            cuponAplicado = getString(R.string.order_coupon_saving, "X"),
             ahorro = 19.99
         )
 
@@ -133,13 +146,16 @@ class OrderDetailActivity : AppCompatActivity() {
             // Mostrar resumen
             if (order.cuponAplicado != null) {
                 tvCupon.text = order.cuponAplicado
-                tvAhorro.text = String.format(Locale.US, "-$%.2f", order.ahorro)
+                tvAhorro.text = getString(
+                    R.string.order_coupon_saving,
+                    String.format(Locale.US, "%.2f", order.ahorro)
+                )
             }
 
             tvSubtotal.text = String.format(Locale.US, "$%.2f", order.subtotal)
             tvDescuento.text = String.format(Locale.US, "-$%.2f", order.descuento)
             tvTotal.text = String.format(Locale.US, "$%.2f", order.total)
-            btnSeguir.text = getString(R.string.order_seguir, String.format(Locale.US, "%.2f", order.total))
+            btnSeguir.text = getString(R.string.order_follow_value, String.format(Locale.US, "%.2f", order.total))
         }
     }
 }

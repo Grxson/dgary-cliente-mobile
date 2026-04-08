@@ -13,6 +13,13 @@
     <!-- Neutral Colors -->
     <color name="text_primary">#333333</color>
     <color name="text_secondary">#666666</color>
+    <color name="text_hint">#7A7A7A</color>
+    <color name="text_soft">#777777</color>
+    <color name="surface_soft">#EFEFEF</color>
+    <color name="surface_muted">#EDEDED</color>
+    <color name="stroke_soft">#E5E5E5</color>
+    <color name="divider_light">#EEEEEE</color>
+    <color name="location_pin">#FFD04F</color>
     <color name="background_light">#F5F5F5</color>
     <color name="border_color">#E0E0E0</color>
     <color name="divider_color">#CCCCCC</color>

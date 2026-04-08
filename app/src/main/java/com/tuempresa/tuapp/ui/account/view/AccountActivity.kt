@@ -9,6 +9,7 @@ import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.ui.carrito.view.CarritoActivity
 import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.home.view.HomeActivity
+import com.tuempresa.tuapp.ui.order.view.OrderDetailActivity
 
 class AccountActivity : AppCompatActivity() {
 
@@ -43,11 +44,11 @@ class AccountActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         btnOrdenes.setOnClickListener {
-            // Navegar a pantalla de órdenes (crear después)
+            startActivity(Intent(this, OrderDetailActivity::class.java))
         }
 
         btnBilletera.setOnClickListener {
-            // Navegar a pantalla de billetera (crear después)
+            startActivity(Intent(this, PaymentMethodActivity::class.java))
         }
 
         btnCupones.setOnClickListener {
