@@ -15,6 +15,7 @@ import com.tuempresa.tuapp.domain.model.Preparacion
 import com.tuempresa.tuapp.ui.account.view.PaymentMethodActivity
 import com.tuempresa.tuapp.ui.order.adapter.OrderItemsAdapter
 import com.tuempresa.tuapp.ui.order.adapter.PreparacionAdapter
+import android.content.Intent
 import java.util.Locale
 
 class OrderDetailActivity : AppCompatActivity() {
@@ -78,11 +79,15 @@ class OrderDetailActivity : AppCompatActivity() {
         }
 
         findViewById<LinearLayout>(R.id.btn_metodo_pago).setOnClickListener {
-            startActivity(android.content.Intent(this, PaymentMethodActivity::class.java))
+            val intent = Intent(this, PaymentMethodActivity::class.java)
+            intent.putExtra("order_id", order?.id ?: "")
+            startActivity(intent)
         }
 
         ivMetodoPago.setOnClickListener {
-            startActivity(android.content.Intent(this, PaymentMethodActivity::class.java))
+            val intent = Intent(this, PaymentMethodActivity::class.java)
+            intent.putExtra("order_id", order?.id ?: "")
+            startActivity(intent)
         }
 
         tvUbicacion.setOnClickListener {

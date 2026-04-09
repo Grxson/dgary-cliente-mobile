@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margin_medium" app:cardCornerRadius="@dimen/corner_radius_medium" app:cardElevation="2dp" app:cardUseCompatPadding="true">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/margin_medium">
+
+        <!-- Encabezado: Marca de tarjeta y última vez usada -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="@dimen/margin_small">
+
+            <TextView android:id="@+id/tv_card_brand" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Visa" android:textColor="@color/black" android:textSize="16sp" android:textStyle="bold" />
+
+            <TextView android:id="@+id/tv_card_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Usado el 08 de Abril" android:textColor="@color/text_secondary" android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Número de tarjeta enmascarado -->
+        <TextView android:id="@+id/tv_card_last_four" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="•••• 4242" android:textColor="@color/text_secondary" android:textSize="14sp" android:layout_marginBottom="@dimen/margin_small" />
+
+        <!-- Información adicional: Times used -->
+        <TextView android:id="@+id/tv_card_usage" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Usada 3 veces" android:textColor="@color/text_secondary" android:textSize="12sp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

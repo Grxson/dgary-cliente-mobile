@@ -92,6 +92,10 @@
 
     <!-- Wallet / Payment Screen -->
     <string name="payment_title">Billetera</string>
+    <string name="payment_my_cards">Mis tarjetas</string>
+    <string name="payment_my_cards_subtitle">Tarjetas guardadas en tu billetera</string>
+    <string name="payment_no_cards">No tienes tarjetas guardadas. ¡Agrega una ahora!</string>
+    <string name="payment_add_card_button">+ Añadir tarjeta</string>
     <string name="payment_add_card_title">Agregar tarjeta</string>
     <string name="payment_add_card_subtitle">Usa tu tarjeta para pagar pedidos con Stripe en modo sandbox.</string>
     <string name="payment_secure_note">Tus datos se procesan de forma segura con Stripe.</string>
@@ -99,7 +103,7 @@
     <string name="payment_save_card">Guardar tarjeta</string>
     <string name="payment_card_preview_title">Tarjeta principal</string>
     <string name="payment_card_preview_subtitle">Lista para usarse en tus pedidos</string>
-    <string name="payment_sheet_placeholder">Stripe PaymentSheet sandbox listo. Cuando conectemos backend, aquí se abrirá el formulario oficial para agregar y confirmar método de pago.</string>
+    <string name="payment_sheet_placeholder">Haz clic en el botón "Guardar Tarjeta" para agregar tu método de pago de forma segura con Stripe.</string>
 
     <!-- Location Selection Screen -->
     <string name="location_title">Seleccionar ubicación</string>
