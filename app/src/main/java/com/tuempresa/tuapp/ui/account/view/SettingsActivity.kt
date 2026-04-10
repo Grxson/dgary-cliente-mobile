@@ -6,12 +6,16 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tuempresa.tuapp.R
+import com.tuempresa.tuapp.data.repository.AuthRepository
 import com.tuempresa.tuapp.domain.model.SavedAddress
+import com.tuempresa.tuapp.domain.model.AuthResult
 import com.tuempresa.tuapp.ui.account.adapter.SavedAddressAdapter
 import com.tuempresa.tuapp.ui.auth.view.LoginActivity
+import kotlinx.coroutines.launch
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -21,10 +25,13 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var rvSavedAddresses: RecyclerView
     private lateinit var btnCerrarSesion: LinearLayout
     private lateinit var addressAdapter: SavedAddressAdapter
+    private lateinit var authRepository: AuthRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        authRepository = AuthRepository(this)
 
         initializeViews()
         setupListeners()
@@ -54,9 +61,19 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         btnCerrarSesion.setOnClickListener {
-            // Cerrar sesión
-            startActivity(Intent(this, LoginActivity::class.java))
-            finishAffinity() // Termina todas las actividades
+            lifecycleScope.launch {
+                when (authRepository.logout()) {
+                    is AuthResult.Success -> {
+                        startActivity(Intent(this@SettingsActivity, LoginActivity::class.java))
+                        finishAffinity()
+                    }
+                    is AuthResult.Error -> {
+                        startActivity(Intent(this@SettingsActivity, LoginActivity::class.java))
+                        finishAffinity()
+                    }
+                    AuthResult.Loading -> Unit
+                }
+            }
         }
     }
 

@@ -7,16 +7,21 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.tuempresa.tuapp.R
+import com.tuempresa.tuapp.data.local.CartStore
+import com.tuempresa.tuapp.data.repository.ProductRepository
 import com.tuempresa.tuapp.domain.usecase.GetProductsUseCase
 import com.tuempresa.tuapp.ui.account.view.AccountActivity
 import com.tuempresa.tuapp.ui.carrito.view.CarritoActivity
 import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.home.adapter.ProductAdapter
+import com.tuempresa.tuapp.ui.product.view.ProductDetailActivity
 import com.tuempresa.tuapp.ui.home.viewmodel.HomeViewModel
+import kotlinx.coroutines.launch
 
 // ViewModelFactory para crear instancias de HomeViewModel
 class HomeViewModelFactory(private val getProductsUseCase: GetProductsUseCase) :
@@ -37,6 +42,12 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var rvProducts: RecyclerView
     private lateinit var productAdapter: ProductAdapter
     private lateinit var viewModel: HomeViewModel
+    private lateinit var productRepository: ProductRepository
+
+    private var categoryNievesName: String = "Nieves"
+    private var categoryLecheName: String = "Productos de Leche"
+    private var categoryAguaName: String = "Productos de Agua"
+    private var categoryAguasName: String = "Bebidas"
 
     // Category buttons
     private lateinit var categoryNieves: ImageView
@@ -53,10 +64,13 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        productRepository = ProductRepository(this)
+
         initializeViews()
         setupViewModel()
         setupListeners()
         observeProducts()
+        loadCategoriesFromApi()
     }
 
     private fun initializeViews() {
@@ -75,7 +89,19 @@ class HomeActivity : AppCompatActivity() {
 
         // Configurar RecyclerView de productos con LinearLayoutManager
         rvProducts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        productAdapter = ProductAdapter(emptyList())
+        productAdapter = ProductAdapter(
+            products = emptyList(),
+            onAddToCart = { product ->
+                CartStore.add(product)
+                startActivity(Intent(this, CarritoActivity::class.java))
+            },
+            onProductClick = { product ->
+                startActivity(
+                    Intent(this, ProductDetailActivity::class.java)
+                        .putExtra("product_id", product.id)
+                )
+            }
+        )
         rvProducts.adapter = productAdapter
     }
 
@@ -106,19 +132,19 @@ class HomeActivity : AppCompatActivity() {
         }
 
         categoryNieves.setOnClickListener {
-            viewModel.filterByCategory("Nieves")
+            viewModel.filterByCategory(categoryNievesName)
         }
 
         categoryPLeche.setOnClickListener {
-            viewModel.filterByCategory("P. Leche")
+            viewModel.filterByCategory(categoryLecheName)
         }
 
         categoryPAgua.setOnClickListener {
-            viewModel.filterByCategory("P. Agua")
+            viewModel.filterByCategory(categoryAguaName)
         }
 
         categoryAguas.setOnClickListener {
-            viewModel.filterByCategory("Aguas")
+            viewModel.filterByCategory(categoryAguasName)
         }
 
         btnDelivery.setOnLongClickListener {
@@ -143,8 +169,40 @@ class HomeActivity : AppCompatActivity() {
 
     private fun observeProducts() {
         viewModel.products.observe(this) { products ->
-            productAdapter = ProductAdapter(products)
+            productAdapter = ProductAdapter(
+                products = products,
+                onAddToCart = { product ->
+                    CartStore.add(product)
+                    startActivity(Intent(this, CarritoActivity::class.java))
+                },
+                onProductClick = { product ->
+                    startActivity(
+                        Intent(this, ProductDetailActivity::class.java)
+                            .putExtra("product_id", product.id)
+                    )
+                }
+            )
             rvProducts.adapter = productAdapter
+        }
+    }
+
+    private fun loadCategoriesFromApi() {
+        lifecycleScope.launch {
+            val categories = productRepository.getCategories()
+            if (categories.isEmpty()) {
+                return@launch
+            }
+
+            categoryNievesName = categories.firstOrNull { it.name.contains("nieve", ignoreCase = true) }?.name
+                ?: categoryNievesName
+            categoryLecheName = categories.firstOrNull { it.name.contains("leche", ignoreCase = true) }?.name
+                ?: categoryLecheName
+            categoryAguaName = categories.firstOrNull {
+                it.name.contains("agua", ignoreCase = true) && !it.name.contains("bebida", ignoreCase = true)
+            }?.name ?: categoryAguaName
+            categoryAguasName = categories.firstOrNull {
+                it.name.contains("bebida", ignoreCase = true) || it.name.contains("aguas", ignoreCase = true)
+            }?.name ?: categoryAguasName
         }
     }
 }

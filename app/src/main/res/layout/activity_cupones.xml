@@ -1,148 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/white">
 
-    <!-- Header -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="@dimen/margin_large"
-        android:background="@color/white">
+        <!-- Header -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="@dimen/margin_large" android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/btn_back_cupones"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@string/back_button"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_back"
-            app:tint="@color/black" />
+            <ImageView android:id="@+id/btn_back_cupones" android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/back_button" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/black" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/home_cupones"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginStart="@dimen/margin_large" />
-    </LinearLayout>
-
-    <!-- Divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_secondary" />
-
-    <!-- Cupones List -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cupones"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="@dimen/margin_large"
-        android:clipToPadding="false" />
-
-    <!-- Bottom Navigation Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@color/white"
-        android:elevation="8dp"
-        android:baselineAligned="false">
-
-        <!-- Inicio -->
-        <LinearLayout
-            android:id="@+id/nav_inicio"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/home_inicio"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_back"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_inicio"
-                android:textSize="12sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="2dp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/home_cupones" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/black" android:layout_marginStart="@dimen/margin_large" />
         </LinearLayout>
 
-        <!-- Carrito -->
-        <LinearLayout
-            android:id="@+id/nav_carrito"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/text_secondary" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/home_carrito"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_back"
-                app:tint="@color/text_secondary" />
+        <!-- Cupones List -->
+        <TextView android:id="@+id/tv_coupons_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/margin_large" android:paddingEnd="@dimen/margin_large" android:paddingTop="@dimen/margin_small" android:textColor="@color/text_secondary" android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_carrito"
-                android:textSize="12sp"
-                android:textColor="@color/text_secondary"
-                android:layout_marginTop="2dp" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_cupones" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:padding="@dimen/margin_large" android:clipToPadding="false" />
+
+        <!-- Bottom Navigation Bar -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@color/white" android:elevation="8dp" android:baselineAligned="false">
+
+            <!-- Inicio -->
+            <LinearLayout android:id="@+id/nav_inicio" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_inicio" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/black" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_inicio" android:textSize="12sp" android:textColor="@color/black" android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Carrito -->
+            <LinearLayout android:id="@+id/nav_carrito" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_carrito" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_carrito" android:textSize="12sp" android:textColor="@color/text_secondary" android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Mi Cuenta -->
+            <LinearLayout android:id="@+id/nav_mi_cuenta" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_mi_cuenta" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_mi_cuenta" android:textSize="12sp" android:textColor="@color/text_secondary" android:layout_marginTop="2dp" />
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- Mi Cuenta -->
-        <LinearLayout
-            android:id="@+id/nav_mi_cuenta"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/home_mi_cuenta"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_back"
-                app:tint="@color/text_secondary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_mi_cuenta"
-                android:textSize="12sp"
-                android:textColor="@color/text_secondary"
-                android:layout_marginTop="2dp" />
-        </LinearLayout>
-    </LinearLayout>
 
     </LinearLayout>
 

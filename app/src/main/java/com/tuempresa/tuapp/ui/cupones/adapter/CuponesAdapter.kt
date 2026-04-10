@@ -9,7 +9,10 @@ import com.google.android.material.button.MaterialButton
 import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.ui.cupones.model.Cupon
 
-class CuponesAdapter(private var cupones: List<Cupon>) : RecyclerView.Adapter<CuponesAdapter.CuponViewHolder>() {
+class CuponesAdapter(
+    private var cupones: List<Cupon>,
+    private val onApplyCoupon: (Cupon) -> Unit
+) : RecyclerView.Adapter<CuponesAdapter.CuponViewHolder>() {
 
     class CuponViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitulo: TextView = itemView.findViewById(R.id.tv_cupon_titulo)
@@ -17,15 +20,14 @@ class CuponesAdapter(private var cupones: List<Cupon>) : RecyclerView.Adapter<Cu
         private val tvDescuento: TextView = itemView.findViewById(R.id.tv_cupon_descuento)
         private val btnComprar: MaterialButton = itemView.findViewById(R.id.btn_cupon_comprar)
 
-        fun bind(cupon: Cupon) {
+        fun bind(cupon: Cupon, onApplyCoupon: (Cupon) -> Unit) {
             tvTitulo.text = cupon.titulo
             tvDescripcion.text = cupon.descripcion
             tvDescuento.text = cupon.descuento
 
             btnComprar.text = cupon.botonTexto
             btnComprar.setOnClickListener {
-                // Aquí se podría agregar lógica para comprar el cupón
-                // Por ahora solo es una acción placeholder
+                onApplyCoupon(cupon)
             }
         }
     }
@@ -37,9 +39,14 @@ class CuponesAdapter(private var cupones: List<Cupon>) : RecyclerView.Adapter<Cu
     }
 
     override fun onBindViewHolder(holder: CuponViewHolder, position: Int) {
-        holder.bind(cupones[position])
+        holder.bind(cupones[position], onApplyCoupon)
     }
 
     override fun getItemCount() = cupones.size
+
+    fun updateItems(items: List<Cupon>) {
+        cupones = items
+        notifyDataSetChanged()
+    }
 }
 

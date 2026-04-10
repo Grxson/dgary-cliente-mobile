@@ -1,5 +1,6 @@
 package com.tuempresa.tuapp.ui.account.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -14,11 +15,16 @@ import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import com.tuempresa.tuapp.R
+import com.tuempresa.tuapp.data.local.CartStore
 import com.tuempresa.tuapp.data.local.SessionManager
 import com.tuempresa.tuapp.data.remote.ApiClient
 import com.tuempresa.tuapp.data.remote.dto.ConfirmPaymentRequestDto
+import com.tuempresa.tuapp.data.remote.dto.PaymentMethodDto
+import com.tuempresa.tuapp.data.remote.dto.UseSavedCardRequestDto
+import com.tuempresa.tuapp.ui.order.view.OrderTrackingActivity
 import com.tuempresa.tuapp.ui.account.view.adapter.CardAdapter
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 class PaymentMethodActivity : AppCompatActivity() {
 
@@ -52,6 +58,9 @@ class PaymentMethodActivity : AppCompatActivity() {
         
         // Configurar RecyclerView
         cardAdapter = CardAdapter()
+        cardAdapter.setOnCardClickListener { card ->
+            payWithSavedCard(card)
+        }
         rvSavedCards.layoutManager = LinearLayoutManager(this)
         rvSavedCards.adapter = cardAdapter
 
@@ -63,13 +72,110 @@ class PaymentMethodActivity : AppCompatActivity() {
         btnBack.setOnClickListener { 
             finish() 
         }
-        
-        btnAnadirTarjeta.setOnClickListener { 
-            presentPaymentSheetForAddingCard()
+
+        if (!currentOrderId.isNullOrBlank() && currentOrderId != "wallet-add-card") {
+            btnAnadirTarjeta.text = "Pagar con nueva tarjeta"
+            btnAnadirTarjeta.setOnClickListener {
+                presentPaymentSheet(currentOrderId)
+            }
+        } else {
+            btnAnadirTarjeta.text = "+ Añadir tarjeta"
+            btnAnadirTarjeta.setOnClickListener {
+                presentPaymentSheetForAddingCard()
+            }
         }
         
         // Cargar tarjetas guardadas al abrir
         loadSavedCards()
+
+        // No abrir PaymentSheet automáticamente.
+        // Si hay tarjeta guardada, el usuario puede tocarla para pagar sin volver a capturar datos.
+    }
+
+    private fun payWithSavedCard(card: PaymentMethodDto) {
+        lifecycleScope.launch {
+            try {
+                val orderId = currentOrderId
+                if (orderId.isNullOrBlank() || orderId == "wallet-add-card") {
+                    Toast.makeText(
+                        this@PaymentMethodActivity,
+                        "Esta pantalla de tarjetas es para checkout de una orden",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@launch
+                }
+
+                val paymentMethodId = card.stripe_payment_method_id
+                if (paymentMethodId.isNullOrBlank()) {
+                    Toast.makeText(
+                        this@PaymentMethodActivity,
+                        "Esta tarjeta no se puede reutilizar, agrega una nueva",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@launch
+                }
+
+                val token = sessionManager.getToken()
+                if (token.isNullOrBlank()) {
+                    Toast.makeText(
+                        this@PaymentMethodActivity,
+                        "Error: Token de autenticación no disponible",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@launch
+                }
+
+                btnAnadirTarjeta.isEnabled = false
+                btnAnadirTarjeta.text = "Procesando..."
+
+                val response = apiService.payWithSavedCard(
+                    orderId,
+                    UseSavedCardRequestDto(payment_method_id = paymentMethodId),
+                    "Bearer $token"
+                )
+
+                if (response.isSuccessful) {
+                    CartStore.clear()
+                    Toast.makeText(
+                        this@PaymentMethodActivity,
+                        "¡Pago exitoso con tarjeta guardada!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    delay(700)
+                    navigateToOrderTracking(orderId)
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("PaymentMethodActivity", "❌ Error pago tarjeta guardada: $errorBody")
+
+                    if (errorBody?.contains("legacy no adjuntable", ignoreCase = true) == true) {
+                        Toast.makeText(
+                            this@PaymentMethodActivity,
+                            "Tu tarjeta guardada anterior necesita revalidación. Continúa con nueva tarjeta.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        presentPaymentSheet(orderId)
+                        return@launch
+                    }
+
+                    Toast.makeText(
+                        this@PaymentMethodActivity,
+                        "No se pudo cobrar con la tarjeta guardada",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    btnAnadirTarjeta.isEnabled = true
+                    btnAnadirTarjeta.text = "+ Añadir tarjeta"
+                }
+            } catch (e: Exception) {
+                Log.e("PaymentMethodActivity", "❌ Excepción pago tarjeta guardada: ${e.message}", e)
+                Toast.makeText(
+                    this@PaymentMethodActivity,
+                    "Error: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                btnAnadirTarjeta.isEnabled = true
+                btnAnadirTarjeta.text = "+ Añadir tarjeta"
+            }
+        }
     }
 
     /**
@@ -88,6 +194,9 @@ class PaymentMethodActivity : AppCompatActivity() {
                     return@launch
                 }
 
+                // Limpia tarjetas legacy no reutilizables para evitar mostrar opciones inválidas.
+                apiService.cleanupPaymentMethods("Bearer $token")
+
                 val response = apiService.getPaymentMethods("Bearer $token")
 
                 if (response.isSuccessful) {
@@ -100,6 +209,11 @@ class PaymentMethodActivity : AppCompatActivity() {
                         // Mostrar mensaje de sin tarjetas
                         tvNoCards.visibility = android.view.View.VISIBLE
                         rvSavedCards.visibility = android.view.View.GONE
+
+                        // Si venimos de checkout y no hay tarjeta guardada, abrir pago con nueva tarjeta.
+                        if (!currentOrderId.isNullOrBlank() && currentOrderId != "wallet-add-card") {
+                            presentPaymentSheet(currentOrderId)
+                        }
                     } else {
                         // Mostrar lista de tarjetas
                         tvNoCards.visibility = android.view.View.GONE
@@ -157,12 +271,26 @@ class PaymentMethodActivity : AppCompatActivity() {
                     val paymentData = body?.data
 
                     if (paymentData != null) {
-                        currentPaymentIntentId = paymentData.stripe_payment_intent_id
+                        val intentId = paymentData.stripe_payment_intent_id
+                        val clientSecret = paymentData.client_secret
+                        if (intentId.isNullOrBlank() || clientSecret.isNullOrBlank()) {
+                            Log.e("PaymentMethodActivity", "❌ Setup intent inválido")
+                            Toast.makeText(
+                                this@PaymentMethodActivity,
+                                "Error: datos de tarjeta inválidos",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            btnAnadirTarjeta.isEnabled = true
+                            btnAnadirTarjeta.text = "+ Añadir tarjeta"
+                            return@launch
+                        }
+
+                        currentPaymentIntentId = intentId
                         val isSetupIntent = paymentData.is_setup_intent ?: false
                         
                         Log.d(
                             "PaymentMethodActivity",
-                            "✅ Setup intent creado (sin cobro): ${paymentData.stripe_payment_intent_id.take(20)}..."
+                            "✅ Setup intent creado (sin cobro): ${intentId.take(20)}..."
                         )
 
                         // Presentar PaymentSheet
@@ -264,15 +392,29 @@ class PaymentMethodActivity : AppCompatActivity() {
                     val paymentData = body?.data
 
                     if (paymentData != null) {
-                        currentPaymentIntentId = paymentData.stripe_payment_intent_id
+                        val intentId = paymentData.stripe_payment_intent_id
+                        val clientSecret = paymentData.client_secret
+                        if (intentId.isNullOrBlank() || clientSecret.isNullOrBlank()) {
+                            Log.e("PaymentMethodActivity", "❌ stripe_payment_intent_id nulo o vacío")
+                            Toast.makeText(
+                                this@PaymentMethodActivity,
+                                "Error: intent de pago inválido",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            btnAnadirTarjeta.isEnabled = true
+                            btnAnadirTarjeta.text = "+ Añadir tarjeta"
+                            return@launch
+                        }
+
+                        currentPaymentIntentId = intentId
                         Log.d(
                             "PaymentMethodActivity",
-                            "✅ Payment intent creado: ${paymentData.stripe_payment_intent_id.take(20)}..."
+                            "✅ Payment intent creado: ${intentId.take(20)}..."
                         )
 
                         // Presentar PaymentSheet
                         paymentSheet.presentWithPaymentIntent(
-                            paymentData.client_secret,
+                            clientSecret,
                             PaymentSheet.Configuration(
                                 merchantDisplayName = "Heladería"
                             )
@@ -404,10 +546,15 @@ class PaymentMethodActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    // Esperar un poco y cerrar
-                    Thread.sleep(1500)
-                    setResult(RESULT_OK)
-                    finish()
+                    if (orderId == "wallet-add-card") {
+                        delay(1200)
+                        setResult(RESULT_OK)
+                        finish()
+                    } else {
+                        CartStore.clear()
+                        delay(900)
+                        navigateToOrderTracking(orderId)
+                    }
                 } else {
                     Log.e("PaymentMethodActivity", "❌ Error: ${response.code()}")
                     val errorBody = response.errorBody()?.string()
@@ -433,6 +580,14 @@ class PaymentMethodActivity : AppCompatActivity() {
                 btnAnadirTarjeta.text = "+ Añadir tarjeta"
             }
         }
+    }
+
+    private fun navigateToOrderTracking(orderId: String) {
+        val intent = Intent(this, OrderTrackingActivity::class.java).apply {
+            putExtra("order_id", orderId)
+        }
+        startActivity(intent)
+        finish()
     }
 }
 

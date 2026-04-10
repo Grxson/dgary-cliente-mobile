@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.tuempresa.tuapp.data.local.SessionManager
 import com.tuempresa.tuapp.data.remote.ApiClient
+import com.tuempresa.tuapp.data.remote.dto.CategoryDto
 import com.tuempresa.tuapp.domain.model.Product
 
 class ProductRepository(context: Context) {
@@ -47,6 +48,54 @@ class ProductRepository(context: Context) {
             } ?: emptyList()
         } catch (e: Exception) {
             Log.e("ProductRepository", "📦 PRODUCTOS - Excepción: ${e.message}", e)
+            emptyList()
+        }
+    }
+
+    suspend fun getProductById(id: String): Product? {
+        val token = sessionManager.getToken()
+        if (token.isNullOrBlank()) {
+            return null
+        }
+
+        return try {
+            val response = apiService.getProductById("Bearer $token", id)
+            if (!response.isSuccessful) {
+                Log.e("ProductRepository", "📦 PRODUCTO DETALLE - Error HTTP ${response.code()}")
+                return null
+            }
+
+            val dto = response.body()?.data ?: return null
+            Product(
+                id = dto.id.toString(),
+                name = dto.name,
+                category = dto.category ?: "Sin categoría",
+                price = dto.price,
+                estimatedTime = dto.estimatedTime ?: "10-25 min Estimación",
+                imageUrl = dto.imageUrl
+            )
+        } catch (e: Exception) {
+            Log.e("ProductRepository", "📦 PRODUCTO DETALLE - Excepción: ${e.message}", e)
+            null
+        }
+    }
+
+    suspend fun getCategories(): List<CategoryDto> {
+        val token = sessionManager.getToken()
+        if (token.isNullOrBlank()) {
+            return emptyList()
+        }
+
+        return try {
+            val response = apiService.getCategories("Bearer $token")
+            if (!response.isSuccessful) {
+                Log.e("ProductRepository", "📦 CATEGORIAS - Error HTTP ${response.code()}")
+                return emptyList()
+            }
+
+            response.body()?.data.orEmpty()
+        } catch (e: Exception) {
+            Log.e("ProductRepository", "📦 CATEGORIAS - Excepción: ${e.message}", e)
             emptyList()
         }
     }

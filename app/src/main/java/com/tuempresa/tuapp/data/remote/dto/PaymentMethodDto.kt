@@ -12,6 +12,9 @@ data class PaymentMethodDto(
     
     @SerializedName("stripe_charge_id")
     val stripe_charge_id: String?,
+
+    @SerializedName("stripe_payment_method_id")
+    val stripe_payment_method_id: String? = null,
     
     @SerializedName("card_brand")
     val card_brand: String, // Visa, Mastercard, etc.

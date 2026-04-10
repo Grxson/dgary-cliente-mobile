@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium" android:background="@drawable/bg_discount_badge">
+
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+
+        <TextView android:id="@+id/tv_cart_item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/black" android:textSize="14sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/tv_cart_item_price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_secondary" android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+
+        <TextView android:id="@+id/btn_cart_decrease" android:layout_width="28dp" android:layout_height="28dp" android:gravity="center" android:text="-" android:textColor="@color/black" android:textSize="18sp" android:background="@drawable/bg_discount_badge" />
+
+        <TextView android:id="@+id/tv_cart_item_quantity" android:layout_width="32dp" android:layout_height="wrap_content" android:gravity="center" android:textColor="@color/black" android:textSize="14sp" android:textStyle="bold" />
+
+        <TextView android:id="@+id/btn_cart_increase" android:layout_width="28dp" android:layout_height="28dp" android:gravity="center" android:text="+" android:textColor="@color/black" android:textSize="18sp" android:background="@drawable/bg_discount_badge" />
+
+        <ImageView android:id="@+id/btn_cart_remove" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginStart="@dimen/margin_medium" android:contentDescription="@string/cart_remove_item" android:src="@drawable/ic_back" app:tint="@color/dgary_red" />
+    </LinearLayout>
+</LinearLayout>

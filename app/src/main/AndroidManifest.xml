@@ -35,9 +35,13 @@
 
         <activity android:name="com.tuempresa.tuapp.ui.order.view.OrderDetailActivity" android:exported="true" android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
 
+        <activity android:name="com.tuempresa.tuapp.ui.order.view.OrdersListActivity" android:exported="true" android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
         <activity android:name="com.tuempresa.tuapp.ui.order.view.LocationSelectionActivity" android:exported="true" android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
 
         <activity android:name="com.tuempresa.tuapp.ui.order.view.OrderTrackingActivity" android:exported="true" android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
+
+        <activity android:name="com.tuempresa.tuapp.ui.product.view.ProductDetailActivity" android:exported="true" android:theme="@style/Theme.Dgaryclientemobile.CleanScreen" />
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ package com.tuempresa.tuapp.data.remote.dto
  * Contrato base usado por la API Laravel.
  */
 data class ApiEnvelope<T>(
+    val success: Boolean? = null,
     val data: T? = null,
     val message: String? = null,
     val errors: Map<String, List<String>>? = null,

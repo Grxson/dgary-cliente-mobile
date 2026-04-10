@@ -74,6 +74,14 @@
     <string name="carrito_agrega_para_comenzar">Agrega para comenzar</string>
     <string name="carrito_descripcion">Una vez que añadas artículos a la tienda, tu carrito aparecerá aquí</string>
     <string name="carrito_empezar_compra">Empezar a comprar</string>
+    <string name="cart_empty_message">Tu carrito está vacío. Agrega productos desde Inicio.</string>
+    <string name="cart_summary_title">Resumen</string>
+    <string name="cart_checkout">Confirmar pedido</string>
+    <string name="cart_processing">Procesando...</string>
+    <string name="cart_remove_item">Eliminar producto</string>
+    <string name="cart_subtotal_value">Subtotal: %1$s</string>
+    <string name="cart_discount_value">Descuento: %1$s</string>
+    <string name="cart_total_value">Total: %1$s</string>
 
     <!-- Account Screen -->
     <string name="account_title">Cuenta</string>
@@ -130,6 +138,10 @@
     <string name="order_follow_value">Seguir - $%1$s</string>
 
     <!-- Order Tracking Screen -->
+    <string name="order_tracking_loading">Cargando seguimiento...</string>
+    <string name="order_tracking_error">No se pudo cargar la orden</string>
+    <string name="order_tracking_open">Ver seguimiento</string>
+    <string name="order_tracking_order_number">Orden #%1$s</string>
     <string name="order_tracking_address_sample">GG, GG</string>
     <string name="order_tracking_items_sample">XXXXXXXXXX</string>
 
@@ -151,6 +163,22 @@
     <string name="order_item">Producto</string>
     <string name="order_agregar">Agregar</string>
     <string name="order_quantity_default">1</string>
+    <string name="orders_list_title">Mis órdenes</string>
+    <string name="orders_loading">Cargando órdenes...</string>
+    <string name="orders_empty">Aún no tienes órdenes</string>
+    <string name="order_summary_number">Orden #%1$d</string>
+    <string name="order_summary_no_items">Sin productos</string>
+    <string name="order_status_unknown">Estado desconocido</string>
+    <string name="product_add_to_cart">Agregar al carrito</string>
+    <string name="product_detail_title">Detalle del producto</string>
+    <string name="product_detail_category">Categoría: %1$s</string>
+    <string name="product_detail_eta">Tiempo estimado: %1$s</string>
+    <string name="product_detail_description_default">Producto disponible para entrega y listo para agregar a tu carrito.</string>
+    <string name="product_detail_error">No se pudo cargar el producto</string>
+    <string name="coupons_loading">Cargando cupones...</string>
+    <string name="coupons_empty">No hay cupones disponibles por ahora.</string>
+    <string name="coupon_apply">Aplicar</string>
+    <string name="logout_loading">Cerrando sesión...</string>
 
     <!-- Order Tracking Screen -->
     <string name="order_preparando">Preparando tu orden</string>
@@ -166,4 +194,6 @@
 
     <!-- General -->
     <string name="next">Siguiente</string>
+    <string name="order_location_label">Casa</string>
+    <string name="account_save_changes">Guardar Cambios</string>
 </resources>

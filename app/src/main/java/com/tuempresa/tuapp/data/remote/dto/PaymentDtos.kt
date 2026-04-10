@@ -6,8 +6,8 @@ data class PaymentIntentRequestDto(
 
 data class PaymentIntentResponseDto(
     val payment_id: String,
-    val stripe_payment_intent_id: String,
-    val client_secret: String,
+    val stripe_payment_intent_id: String?,
+    val client_secret: String?,
     val amount: Long,
     val currency: String,
     val is_setup_intent: Boolean? = false // TRUE para agregar tarjeta, FALSE para pagar
@@ -15,6 +15,10 @@ data class PaymentIntentResponseDto(
 
 data class ConfirmPaymentRequestDto(
     val payment_intent_id: String
+)
+
+data class UseSavedCardRequestDto(
+    val payment_method_id: String
 )
 
 data class ConfirmPaymentResponseDto(

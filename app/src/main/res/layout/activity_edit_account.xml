@@ -1,148 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/white">
 
     <!-- Header with back button -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="@dimen/margin_large"
-        android:background="@color/white">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="@dimen/margin_large" android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/btn_back_edit_account"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@string/back_button"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_back"
-            app:tint="@color/black"
-            android:layout_marginEnd="@dimen/margin_medium" />
+        <ImageView android:id="@+id/btn_back_edit_account" android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/back_button" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/black" android:layout_marginEnd="@dimen/margin_medium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/account_edit_cuenta"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/account_edit_cuenta" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/black" />
     </LinearLayout>
 
     <!-- Divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/text_secondary" />
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/text_secondary" />
 
     <!-- Content -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_large">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/margin_large">
 
             <!-- Nombre -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/account_nombre"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/margin_small" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/account_nombre" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_marginBottom="@dimen/margin_small" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
-                app:boxStrokeColor="@color/dgary_green"
-                app:boxStrokeWidth="1dp">
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margin_large" app:boxStrokeColor="@color/dgary_green" app:boxStrokeWidth="1dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_nombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/account_nombre_hint"
-                    android:inputType="text"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_nombre" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/account_nombre_hint" android:inputType="text" android:textSize="14sp" android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Email -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_email_hint"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/margin_small" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/login_email_hint" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_marginBottom="@dimen/margin_small" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
-                app:boxStrokeColor="@color/dgary_green"
-                app:boxStrokeWidth="1dp">
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margin_large" app:boxStrokeColor="@color/dgary_green" app:boxStrokeWidth="1dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/login_email_hint"
-                    android:inputType="textEmailAddress"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_email" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/login_email_hint" android:inputType="textEmailAddress" android:textSize="14sp" android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Teléfono -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/register_phone_hint"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/margin_small" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/register_phone_hint" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_marginBottom="@dimen/margin_small" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"
-                app:boxStrokeColor="@color/dgary_green"
-                app:boxStrokeWidth="1dp">
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margin_large" app:boxStrokeColor="@color/dgary_green" app:boxStrokeWidth="1dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_telefono"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/register_phone_hint"
-                    android:inputType="phone"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_telefono" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/register_phone_hint" android:inputType="phone" android:textSize="14sp" android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Dirección -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/order_location_label" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/black" android:layout_marginBottom="@dimen/margin_small" />
+
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margin_large" app:boxStrokeColor="@color/dgary_green" app:boxStrokeWidth="1dp">
+
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_direccion" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/order_location_value" android:inputType="textPostalAddress" android:textSize="14sp" android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Save Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_guardar_cambios"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/account_guardar_cambios"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/dgary_yellow"
-                app:cornerRadius="@dimen/corner_radius_large"
-                android:layout_marginTop="@dimen/margin_large" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_guardar_cambios" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/account_guardar_cambios" android:textColor="@color/black" android:backgroundTint="@color/dgary_yellow" app:cornerRadius="@dimen/corner_radius_large" android:layout_marginTop="@dimen/margin_large" />
         </LinearLayout>
     </ScrollView>
 

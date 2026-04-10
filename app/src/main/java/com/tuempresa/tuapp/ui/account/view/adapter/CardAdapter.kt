@@ -14,6 +14,7 @@ import java.util.Locale
 class CardAdapter : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     private val cards = mutableListOf<PaymentMethodDto>()
+    private var onCardClick: ((PaymentMethodDto) -> Unit)? = null
 
     inner class CardViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
         private val tvCardBrand: TextView = itemView.findViewById(R.id.tv_card_brand)
@@ -37,6 +38,10 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
                 else -> "Usada ${card.usage_count} veces"
             }
             tvCardUsage.text = usageText
+
+            itemView.setOnClickListener {
+                onCardClick?.invoke(card)
+            }
         }
 
         /**
@@ -84,6 +89,10 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
         cards.clear()
         cards.addAll(newCards)
         notifyDataSetChanged()
+    }
+
+    fun setOnCardClickListener(listener: (PaymentMethodDto) -> Unit) {
+        onCardClick = listener
     }
 
     /**

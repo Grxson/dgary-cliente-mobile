@@ -27,3 +27,11 @@ data class AuthDataDto(
     val token: String,
     val expires_at: String? = null
 )
+
+data class UpdateProfileRequestDto(
+    val name: String? = null,
+    val phone: String? = null,
+    val address: String? = null,
+    val password: String? = null,
+    val password_confirmation: String? = null
+)

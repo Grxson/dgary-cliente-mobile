@@ -5,7 +5,9 @@ import android.util.Log
 import com.tuempresa.tuapp.data.local.SessionManager
 import com.tuempresa.tuapp.data.remote.ApiClient
 import com.tuempresa.tuapp.data.remote.dto.LoginRequestDto
+import com.tuempresa.tuapp.data.remote.dto.UpdateProfileRequestDto
 import com.tuempresa.tuapp.data.remote.dto.RegisterRequestDto
+import com.tuempresa.tuapp.data.remote.dto.CustomerDto
 import com.tuempresa.tuapp.domain.model.AuthResult
 import org.json.JSONObject
 
@@ -78,6 +80,73 @@ class AuthRepository(context: Context) {
         } catch (e: Exception) {
             Log.e("AuthRepository", "🔐 REGISTER - Excepción: ${e.message}", e)
             AuthResult.Error("Error de red: ${e.message ?: "desconocido"}")
+        }
+    }
+
+    suspend fun getProfile(): CustomerDto? {
+        return try {
+            val token = sessionManager.getToken()
+            if (token.isNullOrBlank()) return null
+
+            val response = apiService.me("Bearer $token")
+            if (response.isSuccessful) {
+                response.body()?.data
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("AuthRepository", "🔎 PROFILE - Excepción: ${e.message}", e)
+            null
+        }
+    }
+
+    suspend fun updateProfile(
+        name: String,
+        phone: String,
+        address: String
+    ): AuthResult {
+        return try {
+            val token = sessionManager.getToken()
+            if (token.isNullOrBlank()) {
+                return AuthResult.Error("Sesión expirada")
+            }
+
+            val response = apiService.updateProfile(
+                "Bearer $token",
+                UpdateProfileRequestDto(
+                    name = name,
+                    phone = phone,
+                    address = address
+                )
+            )
+
+            if (response.isSuccessful) {
+                AuthResult.Success(message = response.body()?.message ?: "Perfil actualizado")
+            } else {
+                val errorBody = response.errorBody()?.string()
+                val backendMessage = parseBackendError(errorBody)
+                AuthResult.Error(backendMessage ?: "No se pudo actualizar (${response.code()})")
+            }
+        } catch (e: Exception) {
+            Log.e("AuthRepository", "✏️ PROFILE - Excepción: ${e.message}", e)
+            AuthResult.Error("Error de red: ${e.message ?: "desconocido"}")
+        }
+    }
+
+    suspend fun logout(): AuthResult {
+        return try {
+            val token = sessionManager.getToken()
+
+            if (!token.isNullOrBlank()) {
+                apiService.logout("Bearer $token")
+            }
+
+            sessionManager.clearSession()
+            AuthResult.Success("Sesión cerrada")
+        } catch (e: Exception) {
+            Log.e("AuthRepository", "🚪 LOGOUT - Excepción: ${e.message}", e)
+            sessionManager.clearSession()
+            AuthResult.Success("Sesión cerrada")
         }
     }
 

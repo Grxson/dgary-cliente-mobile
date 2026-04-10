@@ -28,7 +28,11 @@ class HomeViewModel(private val getProductsUseCase: GetProductsUseCase) : ViewMo
     }
 
     fun filterByCategory(category: String) {
-        _products.value = allProducts.filter { it.category == category }
+        _products.value = allProducts.filter {
+            it.category.equals(category, ignoreCase = true) ||
+                it.category.contains(category, ignoreCase = true) ||
+                category.contains(it.category, ignoreCase = true)
+        }
     }
 
     fun loadAllProducts() {

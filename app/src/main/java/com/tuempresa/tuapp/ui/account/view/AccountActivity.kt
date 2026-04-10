@@ -9,7 +9,7 @@ import com.tuempresa.tuapp.R
 import com.tuempresa.tuapp.ui.carrito.view.CarritoActivity
 import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.home.view.HomeActivity
-import com.tuempresa.tuapp.ui.order.view.OrderDetailActivity
+import com.tuempresa.tuapp.ui.order.view.OrdersListActivity
 
 class AccountActivity : AppCompatActivity() {
 
@@ -44,7 +44,7 @@ class AccountActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         btnOrdenes.setOnClickListener {
-            startActivity(Intent(this, OrderDetailActivity::class.java))
+            startActivity(Intent(this, OrdersListActivity::class.java))
         }
 
         btnBilletera.setOnClickListener {
