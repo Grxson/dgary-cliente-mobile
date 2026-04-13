@@ -5,6 +5,8 @@ data class SavedAddress(
     val titulo: String,
     val direccion: String,
     val detalles: String? = null,
-    val esPrincipal: Boolean = false
+    val esPrincipal: Boolean = false,
+    val latitude: Double? = null,
+    val longitude: Double? = null
 )
 

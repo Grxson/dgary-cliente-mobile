@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +22,7 @@ import com.tuempresa.tuapp.ui.carrito.viewmodel.CartViewModel
 import com.tuempresa.tuapp.ui.home.view.HomeActivity
 import com.tuempresa.tuapp.ui.account.view.AccountActivity
 import com.tuempresa.tuapp.ui.account.view.PaymentMethodActivity
+import com.tuempresa.tuapp.ui.order.view.LocationSelectionActivity
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
@@ -40,6 +42,23 @@ class CarritoActivity : AppCompatActivity() {
 
     private lateinit var cartAdapter: CartAdapter
     private var lastShownError: String? = null
+
+    private val locationSelectionLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode != RESULT_OK) return@registerForActivityResult
+
+            val data = result.data ?: return@registerForActivityResult
+            val address = data.getStringExtra(LocationSelectionActivity.EXTRA_SELECTED_ADDRESS)
+            val lat = data.getDoubleExtra(LocationSelectionActivity.EXTRA_SELECTED_LAT, Double.NaN)
+            val lng = data.getDoubleExtra(LocationSelectionActivity.EXTRA_SELECTED_LNG, Double.NaN)
+
+            if (address.isNullOrBlank() || lat.isNaN() || lng.isNaN()) {
+                Toast.makeText(this, "Debes confirmar una ubicación válida", Toast.LENGTH_LONG).show()
+                return@registerForActivityResult
+            }
+
+            proceedCheckout(address, lat, lng)
+        }
 
     private val viewModel: CartViewModel by lazy {
         ViewModelProvider(
@@ -89,11 +108,7 @@ class CarritoActivity : AppCompatActivity() {
         btnBack.setOnClickListener { finish() }
 
         btnCheckout.setOnClickListener {
-            viewModel.checkout { orderId ->
-                val intent = Intent(this, PaymentMethodActivity::class.java)
-                intent.putExtra("order_id", orderId)
-                startActivity(intent)
-            }
+            locationSelectionLauncher.launch(Intent(this, LocationSelectionActivity::class.java))
         }
 
         btnInicio.setOnClickListener {
@@ -107,6 +122,18 @@ class CarritoActivity : AppCompatActivity() {
 
         btnMiCuenta.setOnClickListener {
             startActivity(Intent(this, AccountActivity::class.java))
+        }
+    }
+
+    private fun proceedCheckout(address: String, lat: Double, lng: Double) {
+        viewModel.checkout(
+            address = address,
+            destinationLat = lat,
+            destinationLng = lng
+        ) { orderId ->
+            val intent = Intent(this, PaymentMethodActivity::class.java)
+            intent.putExtra("order_id", orderId)
+            startActivity(intent)
         }
     }
 

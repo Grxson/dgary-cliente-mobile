@@ -20,6 +20,7 @@ import com.tuempresa.tuapp.data.remote.dto.OrderDetailFullDto
 import com.tuempresa.tuapp.data.remote.dto.OrderListDto
 import com.tuempresa.tuapp.data.remote.dto.OrderPreviewResponseDto
 import com.tuempresa.tuapp.data.remote.dto.OrderResponseDto
+import com.tuempresa.tuapp.data.remote.dto.OrderTrackingDto
 import com.tuempresa.tuapp.data.remote.dto.DeliveryDto
 import com.tuempresa.tuapp.data.remote.dto.ValidateCouponRequestDto
 import com.tuempresa.tuapp.data.remote.dto.ValidateCouponResponseDto
@@ -126,6 +127,12 @@ interface ApiService {
         @Path("orderId") orderId: String,
         @Header("Authorization") bearerToken: String
     ): Response<ApiEnvelope<DeliveryDto>>
+
+    @GET("api/v1/orders/{orderId}/tracking")
+    suspend fun getOrderTracking(
+        @Path("orderId") orderId: String,
+        @Header("Authorization") bearerToken: String
+    ): Response<ApiEnvelope<OrderTrackingDto>>
 
     @GET("api/v1/coupons")
     suspend fun getCoupons(

@@ -49,14 +49,24 @@ class OrderRepository(context: Context) {
     suspend fun createOrder(
         items: List<CartItemDto>,
         couponId: String? = null,
-        notes: String? = null
+        notes: String? = null,
+        address: String? = null,
+        destinationLat: Double? = null,
+        destinationLng: Double? = null
     ): OrderResponseDto? {
         val token = bearerToken() ?: return null
 
         return try {
             val response = apiService.createOrder(
                 token,
-                OrderCreateRequestDto(items = items, couponId = couponId, notes = notes)
+                OrderCreateRequestDto(
+                    items = items,
+                    couponId = couponId,
+                    notes = notes,
+                    address = address,
+                    destinationLat = destinationLat,
+                    destinationLng = destinationLng
+                )
             )
             if (response.isSuccessful) {
                 response.body()?.data

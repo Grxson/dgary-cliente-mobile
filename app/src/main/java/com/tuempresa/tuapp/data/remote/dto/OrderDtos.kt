@@ -12,7 +12,13 @@ data class OrderCreateRequestDto(
     val items: List<CartItemDto>,
     @SerializedName("coupon_id")
     val couponId: String? = null,
-    val notes: String? = null
+    val notes: String? = null,
+    val status: String? = null,
+    val address: String? = null,
+    @SerializedName("destination_lat")
+    val destinationLat: Double? = null,
+    @SerializedName("destination_lng")
+    val destinationLng: Double? = null
 )
 
 data class CouponInfoDto(

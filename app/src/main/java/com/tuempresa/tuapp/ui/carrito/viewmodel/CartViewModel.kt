@@ -79,7 +79,12 @@ class CartViewModel(
         }
     }
 
-    fun checkout(onSuccess: (String) -> Unit = {}) {
+    fun checkout(
+        address: String,
+        destinationLat: Double,
+        destinationLng: Double,
+        onSuccess: (String) -> Unit = {}
+    ) {
         val items = _state.value.items
         if (items.isEmpty()) {
             _state.value = _state.value.copy(error = "Tu carrito está vacío")
@@ -88,7 +93,12 @@ class CartViewModel(
 
         viewModelScope.launch {
             _state.value = _state.value.copy(isSubmitting = true, error = null)
-            val order = repository.createOrder(items.map { it.toDto() })
+            val order = repository.createOrder(
+                items = items.map { it.toDto() },
+                address = address,
+                destinationLat = destinationLat,
+                destinationLng = destinationLng
+            )
             _state.value = _state.value.copy(isSubmitting = false, createdOrder = order)
 
             if (order != null) {

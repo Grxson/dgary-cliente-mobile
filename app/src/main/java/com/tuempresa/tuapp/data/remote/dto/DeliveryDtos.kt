@@ -17,3 +17,20 @@ data class DeliveryDto(
     @SerializedName("updated_at")
     val updatedAt: String? = null
 )
+
+data class TrackingLocationDto(
+    val address: String? = null,
+    val lat: Double? = null,
+    val lng: Double? = null,
+    @SerializedName("updated_at")
+    val updatedAt: String? = null
+)
+
+data class OrderTrackingDto(
+    @SerializedName("order_id")
+    val orderId: Int,
+    val status: String? = null,
+    val destination: TrackingLocationDto? = null,
+    @SerializedName("driver_location")
+    val driverLocation: TrackingLocationDto? = null
+)

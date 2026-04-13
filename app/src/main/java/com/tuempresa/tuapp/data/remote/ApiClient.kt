@@ -6,11 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Cliente Retrofit centralizado.
- * Configurado para conectarse a la PC en la red local (192.168.1.10)
+ * Conectado al backend de producción en Railway
  */
 object ApiClient {
 
-    private const val BASE_URL = "http://192.168.1.10:8000/"
+    private const val BASE_URL = "https://dgaryweb-production.up.railway.app/"
 
     val apiService: ApiService by lazy {
         Log.d("ApiClient", "🌐 Inicializando Retrofit con BASE_URL=$BASE_URL")

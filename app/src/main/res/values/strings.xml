@@ -124,6 +124,15 @@
     <string name="location_home">Casa</string>
     <string name="location_work">Trabajo</string>
     <string name="location_sample_subtitle">GG</string>
+    <string name="location_confirm_title">¿A dónde entregar tu pedido?</string>
+    <string name="location_selected_label">Ubicación seleccionada</string>
+    <string name="location_saved_label">Dirección guardada principal</string>
+    <string name="location_use_my_location">Mi ubicación</string>
+    <string name="location_use_saved">Usar guardada</string>
+    <string name="location_confirm_delivery">Confirmar ubicación</string>
+    <string name="location_no_saved">Sin dirección guardada</string>
+    <string name="location_select_on_map">Toca el mapa o usa tu ubicación actual</string>
+    <string name="location_address_required">Selecciona una ubicación para continuar</string>
 
     <!-- Order Detail Screen -->
     <string name="order_location_value">GG</string>
@@ -144,6 +153,27 @@
     <string name="order_tracking_order_number">Orden #%1$s</string>
     <string name="order_tracking_address_sample">GG, GG</string>
     <string name="order_tracking_items_sample">XXXXXXXXXX</string>
+    <string name="order_tracking_map_title">Seguimiento en vivo</string>
+    <string name="order_tracking_driver_label">Repartidor</string>
+    <string name="order_tracking_destination_label">Destino</string>
+    <string name="order_tracking_last_update">Última actualización: %1$s</string>
+    <string name="order_tracking_route_loading">Actualizando mapa...</string>
+    <string name="order_tracking_no_location">Aún no hay ubicación del repartidor</string>
+    <string name="order_tracking_waiting_driver">Esperando asignación de repartidor</string>
+    <string name="order_tracking_waiting_driver_desc">Tu pedido se está preparando</string>
+    <string name="google_maps_api_key">AIzaSyBXxBFfeNOJPB5EzKiHxroQ873tmfxnolk</string>
+
+    <!-- Address Picker Screen -->
+    <string name="account_agregar_ubicacion">Agregar Ubicación</string>
+    <string name="account_ubicacion_seleccionada">Ubicación Seleccionada</string>
+    <string name="account_toca_mapa">Toca en el mapa para seleccionar tu ubicación</string>
+    <string name="account_nombre_ubicacion">Nombre de la ubicación</string>
+    <string name="account_ej_casa_trabajo">Ej: Casa, Trabajo, Escuela</string>
+    <string name="account_guardar_ubicacion">Guardar Ubicación</string>
+    <string name="account_ingresa_nombre">Ingresa un nombre para la ubicación</string>
+    <string name="account_selecciona_ubicacion">Selecciona una ubicación en el mapa</string>
+    <string name="account_editar">Editar</string>
+    <string name="account_eliminar">Eliminar</string>
 
     <!-- Order Detail Screen -->
     <string name="order_detalles">Detalles de la Orden</string>
@@ -177,6 +207,9 @@
     <string name="product_detail_error">No se pudo cargar el producto</string>
     <string name="coupons_loading">Cargando cupones...</string>
     <string name="coupons_empty">No hay cupones disponibles por ahora.</string>
+
+    <!-- Location Permissions -->
+    <string name="account_permiso_ubicacion_denegado">Permiso de ubicación denegado. Se usará la ubicación predeterminada.</string>
     <string name="coupon_apply">Aplicar</string>
     <string name="logout_loading">Cerrando sesión...</string>
 

@@ -9,6 +9,7 @@
     <color name="dgary_yellow">#ECE852</color>
     <color name="dgary_orange">#FFC145</color>
     <color name="dgary_red">#FB4141</color>
+    <color name="red">#FB4141</color>
 
     <!-- Neutral Colors -->
     <color name="text_primary">#333333</color>

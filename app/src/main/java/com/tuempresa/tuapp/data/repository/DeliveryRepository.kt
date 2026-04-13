@@ -5,6 +5,7 @@ import android.util.Log
 import com.tuempresa.tuapp.data.local.SessionManager
 import com.tuempresa.tuapp.data.remote.ApiClient
 import com.tuempresa.tuapp.data.remote.dto.DeliveryDto
+import com.tuempresa.tuapp.data.remote.dto.OrderTrackingDto
 
 class DeliveryRepository(context: Context) {
 
@@ -46,6 +47,23 @@ class DeliveryRepository(context: Context) {
             }
         } catch (e: Exception) {
             Log.e("DeliveryRepository", "Get order delivery exception: ${e.message}", e)
+            null
+        }
+    }
+
+    suspend fun getOrderTracking(orderId: String): OrderTrackingDto? {
+        val token = bearerToken() ?: return null
+
+        return try {
+            val response = apiService.getOrderTracking(orderId = orderId, bearerToken = token)
+            if (response.isSuccessful) {
+                response.body()?.data
+            } else {
+                Log.e("DeliveryRepository", "Get order tracking failed: ${response.code()} ${response.errorBody()?.string()}")
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("DeliveryRepository", "Get order tracking exception: ${e.message}", e)
             null
         }
     }
