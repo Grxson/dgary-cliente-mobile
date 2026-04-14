@@ -1,287 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/white">
 
         <!-- Header -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_large"
-            android:background="@color/white">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/margin_large" android:background="@color/white">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/account_title"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/margin_medium" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/account_title" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/black" android:layout_marginBottom="@dimen/margin_medium" />
 
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/account_user_test"
-                android:textSize="16sp"
-                android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_user_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/account_user_test" android:textSize="16sp" android:textColor="@color/text_secondary" />
         </LinearLayout>
 
         <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/text_secondary" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/text_secondary" />
 
         <!-- Menu Items -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_large">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="vertical" android:padding="@dimen/margin_large">
 
             <!-- Órdenes -->
-            <LinearLayout
-                android:id="@+id/btn_ordenes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="@dimen/margin_medium"
-                android:paddingHorizontal="@dimen/margin_medium">
+            <LinearLayout android:id="@+id/btn_ordenes" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="@dimen/margin_medium" android:paddingHorizontal="@dimen/margin_medium">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/account_ordenes"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_ordenes"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    app:tint="@color/dgary_yellow" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/account_ordenes" android:scaleType="fitCenter" android:src="@drawable/ic_ordenes" android:layout_marginEnd="@dimen/margin_medium" app:tint="@color/dgary_yellow" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/account_ordenes"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/account_ordenes" android:textSize="14sp" android:textColor="@color/black" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/next"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" />
             </LinearLayout>
 
             <!-- Billetera -->
-            <LinearLayout
-                android:id="@+id/btn_billetera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="@dimen/margin_medium"
-                android:paddingHorizontal="@dimen/margin_medium">
+            <LinearLayout android:id="@+id/btn_billetera" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="@dimen/margin_medium" android:paddingHorizontal="@dimen/margin_medium">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/account_billetera"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    app:tint="@color/dgary_green" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/account_billetera" android:scaleType="fitCenter" android:src="@drawable/ic_credit_card" android:layout_marginEnd="@dimen/margin_medium" app:tint="@color/dgary_green" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/account_billetera"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/account_billetera" android:textSize="14sp" android:textColor="@color/black" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/next"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" />
             </LinearLayout>
 
             <!-- Cupones -->
-            <LinearLayout
-                android:id="@+id/btn_cupones"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="@dimen/margin_medium"
-                android:paddingHorizontal="@dimen/margin_medium">
+            <LinearLayout android:id="@+id/btn_cupones" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="@dimen/margin_medium" android:paddingHorizontal="@dimen/margin_medium">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/home_cupones"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    app:tint="@color/dgary_yellow" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_cupones" android:scaleType="fitCenter" android:src="@drawable/ic_coupon" android:layout_marginEnd="@dimen/margin_medium" app:tint="@color/dgary_yellow" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/home_cupones"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/home_cupones" android:textSize="14sp" android:textColor="@color/black" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/next"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" />
             </LinearLayout>
 
             <!-- Ajustes -->
-            <LinearLayout
-                android:id="@+id/btn_ajustes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="@dimen/margin_medium"
-                android:paddingHorizontal="@dimen/margin_medium">
+            <LinearLayout android:id="@+id/btn_ajustes" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="@dimen/margin_medium" android:paddingHorizontal="@dimen/margin_medium">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/account_ajustes"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    app:tint="@color/dgary_green" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/account_ajustes" android:scaleType="fitCenter" android:src="@drawable/ic_settings" android:layout_marginEnd="@dimen/margin_medium" app:tint="@color/dgary_green" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/account_ajustes"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/account_ajustes" android:textSize="14sp" android:textColor="@color/black" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/next"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" />
             </LinearLayout>
         </LinearLayout>
 
         <!-- Bottom Navigation Bar -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@color/white"
-            android:elevation="8dp"
-            android:baselineAligned="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@color/white" android:elevation="8dp" android:baselineAligned="false">
 
             <!-- Inicio -->
-            <LinearLayout
-                android:id="@+id/nav_inicio"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+            <LinearLayout android:id="@+id/nav_inicio" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/home_inicio"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_inicio" android:scaleType="fitCenter" android:src="@drawable/ic_home" app:tint="@color/text_secondary" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_inicio"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary"
-                    android:layout_marginTop="2dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_inicio" android:textSize="12sp" android:textColor="@color/text_secondary" android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <!-- Carrito -->
-            <LinearLayout
-                android:id="@+id/nav_carrito"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+            <LinearLayout android:id="@+id/nav_carrito" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/home_carrito"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_carrito" android:scaleType="fitCenter" android:src="@drawable/ic_carrito_vacio" app:tint="@color/text_secondary" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_carrito"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary"
-                    android:layout_marginTop="2dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_carrito" android:textSize="12sp" android:textColor="@color/text_secondary" android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <!-- Mi Cuenta -->
-            <LinearLayout
-                android:id="@+id/nav_mi_cuenta"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+            <LinearLayout android:id="@+id/nav_mi_cuenta" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/home_mi_cuenta"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/black" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_mi_cuenta" android:scaleType="fitCenter" android:src="@drawable/ic_account" app:tint="@color/black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_mi_cuenta"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="2dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_mi_cuenta" android:textSize="12sp" android:textColor="@color/black" android:layout_marginTop="2dp" />
             </LinearLayout>
         </LinearLayout>
 

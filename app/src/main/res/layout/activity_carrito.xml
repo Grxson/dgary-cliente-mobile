@@ -38,21 +38,21 @@
 
         <LinearLayout android:id="@+id/nav_inicio" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
 
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_inicio" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_inicio" android:src="@drawable/ic_home" app:tint="@color/text_secondary" />
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_inicio" android:textColor="@color/text_secondary" android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout android:id="@+id/nav_carrito" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
 
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_carrito" android:src="@drawable/ic_back" app:tint="@color/black" />
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_carrito" android:src="@drawable/ic_carrito_vacio" app:tint="@color/black" />
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_carrito" android:textColor="@color/black" android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout android:id="@+id/nav_mi_cuenta" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
 
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_mi_cuenta" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/home_mi_cuenta" android:src="@drawable/ic_account" app:tint="@color/text_secondary" />
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_mi_cuenta" android:textColor="@color/text_secondary" android:textSize="12sp" />
         </LinearLayout>

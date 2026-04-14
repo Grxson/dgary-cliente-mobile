@@ -21,7 +21,7 @@
             <!-- Ubicación -->
             <LinearLayout android:id="@+id/btn_ubicacion" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="@dimen/margin_large">
 
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/order_ubicacion" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/black" android:layout_marginEnd="@dimen/margin_medium" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/order_ubicacion" android:scaleType="fitCenter" android:src="@drawable/ic_location_marker" app:tint="@color/black" android:layout_marginEnd="@dimen/margin_medium" />
 
                 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
 
@@ -30,7 +30,7 @@
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/order_ubicacion_label" android:textSize="12sp" android:textColor="@color/text_secondary" />
                 </LinearLayout>
 
-                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" />
             </LinearLayout>
 
             <!-- Tiempo de Entrega -->
@@ -66,7 +66,7 @@
             <!-- Cupón Aplicado -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="@dimen/margin_medium" android:paddingHorizontal="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_large">
 
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/order_cupon" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/dgary_green" android:layout_marginEnd="@dimen/margin_medium" />
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="@string/order_cupon" android:scaleType="fitCenter" android:src="@drawable/ic_coupon" app:tint="@color/dgary_green" android:layout_marginEnd="@dimen/margin_medium" />
 
                 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
 
@@ -75,7 +75,7 @@
                     <TextView android:id="@+id/tv_ahorro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:textStyle="bold" android:textColor="@color/dgary_green" />
                 </LinearLayout>
 
-                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" />
             </LinearLayout>
 
             <!-- TV Cupon (hidden by default) -->
@@ -113,9 +113,9 @@
             <!-- Método de Pago -->
             <LinearLayout android:id="@+id/btn_metodo_pago" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="@dimen/margin_medium" android:paddingHorizontal="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_large">
 
-                <ImageView android:id="@+id/iv_metodo_pago" android:layout_width="40dp" android:layout_height="40dp" android:contentDescription="@string/order_metodo_pago" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/text_secondary" />
+                <ImageView android:id="@+id/iv_metodo_pago" android:layout_width="40dp" android:layout_height="40dp" android:contentDescription="@string/order_metodo_pago" android:scaleType="fitCenter" android:src="@drawable/ic_credit_card" app:tint="@color/text_secondary" />
 
-                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_back" app:tint="@color/text_secondary" android:layout_marginStart="@dimen/margin_large" />
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@string/next" android:scaleType="fitCenter" android:src="@drawable/ic_chevron_right" app:tint="@color/text_secondary" android:layout_marginStart="@dimen/margin_large" />
             </LinearLayout>
 
         </LinearLayout>
