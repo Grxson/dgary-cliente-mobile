@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.tuempresa.tuapp.data.local.SessionManager
 import com.tuempresa.tuapp.data.remote.ApiClient
-import com.tuempresa.tuapp.data.remote.dto.CustomerCouponDto
+import com.tuempresa.tuapp.data.remote.dto.CouponDto
 import com.tuempresa.tuapp.data.remote.dto.ValidateCouponRequestDto
 import com.tuempresa.tuapp.data.remote.dto.ValidateCouponResponseDto
 
@@ -18,7 +18,7 @@ class CouponRepository(context: Context) {
         return token?.takeIf { it.isNotBlank() }?.let { "Bearer $it" }
     }
 
-    suspend fun getCoupons(): List<CustomerCouponDto> {
+    suspend fun getCoupons(): List<CouponDto> {
         val token = bearerToken() ?: return emptyList()
 
         return try {
@@ -35,13 +35,13 @@ class CouponRepository(context: Context) {
         }
     }
 
-    suspend fun validateCoupon(couponId: Int, subtotal: Double): ValidateCouponResponseDto? {
+    suspend fun validateCoupon(couponCode: String, subtotal: Double): ValidateCouponResponseDto? {
         val token = bearerToken() ?: return null
 
         return try {
             val response = apiService.validateCoupon(
                 bearerToken = token,
-                request = ValidateCouponRequestDto(couponId = couponId, subtotal = subtotal)
+                request = ValidateCouponRequestDto(couponId = couponCode, subtotal = subtotal)
             )
             if (response.isSuccessful) {
                 response.body()?.data

@@ -66,6 +66,7 @@
     <string name="cupon_descripcion_default">Descripción del Cupón</string>
     <string name="cupon_descripcion_especial">Cupón especial para compras mayores</string>
     <string name="cupon_descripcion_limitada">Oferta limitada</string>
+    <string name="coupon_applied">Aplicado</string>
 
     <!-- Carrito Screen -->
     <string name="carrito_title">Carrito</string>
@@ -81,6 +82,9 @@
     <string name="cart_remove_item">Eliminar producto</string>
     <string name="cart_subtotal_value">Subtotal: %1$s</string>
     <string name="cart_discount_value">Descuento: %1$s</string>
+    <string name="cart_coupon_value">Cupón aplicado: %1$s (%2$s)</string>
+    <string name="cart_apply_coupon">Aplicar cupón</string>
+    <string name="cart_change_coupon">Cambiar o quitar cupón</string>
     <string name="cart_total_value">Total: %1$s</string>
 
     <!-- Account Screen -->

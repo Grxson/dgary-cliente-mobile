@@ -19,6 +19,8 @@
         <!-- Description -->
         <TextView android:id="@+id/tv_cupon_descripcion" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="14sp" android:textColor="@color/text_secondary" android:layout_marginBottom="@dimen/margin_large" />
 
+        <TextView android:id="@+id/tv_cupon_estado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margin_medium" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:background="@drawable/bg_discount_badge" android:text="@string/coupon_applied" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" android:visibility="gone" />
+
         <!-- Buy Button -->
         <com.google.android.material.button.MaterialButton android:id="@+id/btn_cupon_comprar" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/coupon_apply" android:textColor="@color/white" android:backgroundTint="@color/dgary_green" app:cornerRadius="@dimen/corner_radius_large" />
 

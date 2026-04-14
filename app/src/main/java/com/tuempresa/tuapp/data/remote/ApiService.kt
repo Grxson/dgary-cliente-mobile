@@ -3,7 +3,7 @@ package com.tuempresa.tuapp.data.remote
 import com.tuempresa.tuapp.data.remote.dto.ApiEnvelope
 import com.tuempresa.tuapp.data.remote.dto.AuthDataDto
 import com.tuempresa.tuapp.data.remote.dto.CategoryDto
-import com.tuempresa.tuapp.data.remote.dto.CustomerCouponDto
+import com.tuempresa.tuapp.data.remote.dto.CouponDto
 import com.tuempresa.tuapp.data.remote.dto.LoginRequestDto
 import com.tuempresa.tuapp.data.remote.dto.ProductDto
 import com.tuempresa.tuapp.data.remote.dto.RegisterRequestDto
@@ -137,7 +137,7 @@ interface ApiService {
     @GET("api/v1/coupons")
     suspend fun getCoupons(
         @Header("Authorization") bearerToken: String
-    ): Response<ApiEnvelope<List<CustomerCouponDto>>>
+    ): Response<ApiEnvelope<List<CouponDto>>>
 
     @POST("api/v1/coupons/validate")
     suspend fun validateCoupon(

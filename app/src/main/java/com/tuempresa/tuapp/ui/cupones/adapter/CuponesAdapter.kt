@@ -14,18 +14,27 @@ class CuponesAdapter(
     private val onApplyCoupon: (Cupon) -> Unit
 ) : RecyclerView.Adapter<CuponesAdapter.CuponViewHolder>() {
 
+    private var selectedCouponCode: String? = null
+
     class CuponViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitulo: TextView = itemView.findViewById(R.id.tv_cupon_titulo)
         private val tvDescripcion: TextView = itemView.findViewById(R.id.tv_cupon_descripcion)
         private val tvDescuento: TextView = itemView.findViewById(R.id.tv_cupon_descuento)
+        private val tvEstado: TextView = itemView.findViewById(R.id.tv_cupon_estado)
         private val btnComprar: MaterialButton = itemView.findViewById(R.id.btn_cupon_comprar)
 
-        fun bind(cupon: Cupon, onApplyCoupon: (Cupon) -> Unit) {
+        fun bind(cupon: Cupon, isSelected: Boolean, onApplyCoupon: (Cupon) -> Unit) {
             tvTitulo.text = cupon.titulo
             tvDescripcion.text = cupon.descripcion
             tvDescuento.text = cupon.descuento
 
-            btnComprar.text = cupon.botonTexto
+            tvEstado.visibility = if (isSelected) View.VISIBLE else View.GONE
+            btnComprar.text = if (isSelected) {
+                itemView.context.getString(R.string.cart_change_coupon)
+            } else {
+                cupon.botonTexto
+            }
+            btnComprar.isEnabled = true
             btnComprar.setOnClickListener {
                 onApplyCoupon(cupon)
             }
@@ -39,13 +48,14 @@ class CuponesAdapter(
     }
 
     override fun onBindViewHolder(holder: CuponViewHolder, position: Int) {
-        holder.bind(cupones[position], onApplyCoupon)
+        holder.bind(cupones[position], cupones[position].code == selectedCouponCode, onApplyCoupon)
     }
 
     override fun getItemCount() = cupones.size
 
-    fun updateItems(items: List<Cupon>) {
+    fun updateItems(items: List<Cupon>, selectedCouponCode: String? = null) {
         cupones = items
+        this.selectedCouponCode = selectedCouponCode
         notifyDataSetChanged()
     }
 }

@@ -5,32 +5,39 @@ import com.google.gson.annotations.SerializedName
 data class CouponMetaDto(
     val id: Int? = null,
     val name: String? = null,
+    val code: String? = null,
+    val description: String? = null,
+    val discount: Int? = null,
     @SerializedName("is_active")
     val isActive: Boolean? = null,
+    val status: Boolean? = null,
     @SerializedName("expires_at")
     val expiresAt: String? = null
 )
 
-data class CustomerCouponDto(
+data class CouponDto(
     val id: Int,
-    @SerializedName("customer_id")
-    val customerId: Int,
+    val name: String? = null,
+    val code: String? = null,
+    val description: String? = null,
+    val discount: Int? = null,
+    @SerializedName("points_price")
+    val pointsPrice: Int? = null,
+    val status: Boolean? = null,
     @SerializedName("coupon_id")
-    val couponId: Int,
-    val status: Boolean,
-    val discount: Int,
+    val couponId: Int? = null,
     val coupon: CouponMetaDto? = null
 )
 
 data class ValidateCouponRequestDto(
     @SerializedName("coupon_id")
-    val couponId: Int,
+    val couponId: String,
     val subtotal: Double
 )
 
 data class ValidateCouponResponseDto(
     @SerializedName("coupon_id")
-    val couponId: Int,
+    val couponId: String,
     @SerializedName("coupon_name")
     val couponName: String? = null,
     @SerializedName("discount_percent")

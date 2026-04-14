@@ -16,12 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.tuempresa.tuapp.R
+import com.tuempresa.tuapp.data.local.SelectedCouponStore
 import com.tuempresa.tuapp.data.repository.OrderRepository
 import com.tuempresa.tuapp.ui.carrito.adapter.CartAdapter
 import com.tuempresa.tuapp.ui.carrito.viewmodel.CartViewModel
 import com.tuempresa.tuapp.ui.home.view.HomeActivity
 import com.tuempresa.tuapp.ui.account.view.AccountActivity
 import com.tuempresa.tuapp.ui.account.view.PaymentMethodActivity
+import com.tuempresa.tuapp.ui.cupones.view.CuponesActivity
 import com.tuempresa.tuapp.ui.order.view.LocationSelectionActivity
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
@@ -34,7 +36,9 @@ class CarritoActivity : AppCompatActivity() {
     private lateinit var tvEmptyCart: TextView
     private lateinit var tvSubtotal: TextView
     private lateinit var tvDiscount: TextView
+    private lateinit var tvCoupon: TextView
     private lateinit var tvTotal: TextView
+    private lateinit var btnCouponAction: MaterialButton
     private lateinit var btnCheckout: MaterialButton
     private lateinit var btnInicio: LinearLayout
     private lateinit var btnCarrito: LinearLayout
@@ -87,7 +91,9 @@ class CarritoActivity : AppCompatActivity() {
         tvEmptyCart = findViewById(R.id.tv_empty_cart)
         tvSubtotal = findViewById(R.id.tv_cart_subtotal)
         tvDiscount = findViewById(R.id.tv_cart_discount)
+        tvCoupon = findViewById(R.id.tv_cart_coupon)
         tvTotal = findViewById(R.id.tv_cart_total)
+        btnCouponAction = findViewById(R.id.btn_coupon_action)
         btnCheckout = findViewById(R.id.btn_checkout)
         btnInicio = findViewById(R.id.nav_inicio)
         btnCarrito = findViewById(R.id.nav_carrito)
@@ -109,6 +115,14 @@ class CarritoActivity : AppCompatActivity() {
 
         btnCheckout.setOnClickListener {
             locationSelectionLauncher.launch(Intent(this, LocationSelectionActivity::class.java))
+        }
+
+        btnCouponAction.setOnClickListener {
+            val hasSelectedCoupon = SelectedCouponStore.selectedCoupon.value != null
+            if (hasSelectedCoupon) {
+                SelectedCouponStore.clear()
+            }
+            startActivity(Intent(this, CuponesActivity::class.java))
         }
 
         btnInicio.setOnClickListener {
@@ -145,11 +159,23 @@ class CarritoActivity : AppCompatActivity() {
                 rvCartItems.visibility = if (state.items.isEmpty()) View.GONE else View.VISIBLE
 
                 val subtotal = state.preview?.subtotal ?: state.items.sumOf { it.price * it.quantity }
-                val discount = state.preview?.discountAmount ?: 0.0
-                val total = state.preview?.total ?: (subtotal - discount)
+                val previewDiscount = state.preview?.discountAmount ?: 0.0
+                val couponDiscount = state.selectedCoupon?.discountAmount ?: 0.0
+                val discount = listOf(previewDiscount, couponDiscount).maxOrNull() ?: 0.0
+                val appliedDiscount = discount.coerceAtMost(subtotal)
+                val total = (subtotal - appliedDiscount).coerceAtLeast(0.0)
 
                 tvSubtotal.text = getString(R.string.cart_subtotal_value, toMxn(subtotal))
-                tvDiscount.text = getString(R.string.cart_discount_value, toMxn(discount))
+                tvDiscount.text = getString(R.string.cart_discount_value, toMxn(appliedDiscount))
+                tvCoupon.visibility = if (state.selectedCoupon != null) View.VISIBLE else View.GONE
+                tvCoupon.text = state.selectedCoupon?.let {
+                    getString(R.string.cart_coupon_value, it.title, it.discountLabel)
+                } ?: ""
+                btnCouponAction.text = if (state.selectedCoupon != null) {
+                    getString(R.string.cart_change_coupon)
+                } else {
+                    getString(R.string.cart_apply_coupon)
+                }
                 tvTotal.text = getString(R.string.cart_total_value, toMxn(total))
 
                 btnCheckout.isEnabled = !state.isSubmitting && state.items.isNotEmpty()
